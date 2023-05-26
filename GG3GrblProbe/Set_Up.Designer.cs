@@ -511,7 +511,6 @@
             this.label25.Size = new System.Drawing.Size(175, 35);
             this.label25.TabIndex = 45;
             this.label25.Text = "Probe Method";
-            this.label25.Click += new System.EventHandler(this.label25_Click);
             // 
             // comboBox2
             // 
@@ -522,7 +521,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(151, 28);
             this.comboBox2.TabIndex = 46;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label20
             // 
