@@ -82,7 +82,7 @@ namespace GG3GrblProbe
             {
                 return "ERROR: StartY smaller then machine can handle";
             }
-            else if (StartY < MinX)
+            else if (StartX < MinX)
             {
                 return "ERROR: StartX smaller then machine can handle";
             }
