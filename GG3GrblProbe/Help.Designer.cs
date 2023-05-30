@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Help));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Header = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -47,7 +47,10 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.Description = new System.Windows.Forms.Label();
+            this.BestDrawingEver = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BestDrawingEver)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -60,16 +63,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
+            // Header
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(480, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(669, 35);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Select Where You Want Further Details From Image On Left";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.Header.AutoSize = true;
+            this.Header.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Header.Location = new System.Drawing.Point(480, 12);
+            this.Header.Name = "Header";
+            this.Header.Size = new System.Drawing.Size(669, 35);
+            this.Header.TabIndex = 3;
+            this.Header.Text = "Select Where You Want Further Details From Image On Left";
+            this.Header.Click += new System.EventHandler(this.label2_Click);
             // 
             // button1
             // 
@@ -81,6 +84,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Info:";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -92,6 +96,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Info:";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -103,6 +108,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Info:";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -114,6 +120,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Info:";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -125,6 +132,7 @@
             this.button5.TabIndex = 8;
             this.button5.Text = "Info:";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -136,6 +144,7 @@
             this.button6.TabIndex = 9;
             this.button6.Text = "Info:";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -147,6 +156,7 @@
             this.button7.TabIndex = 10;
             this.button7.Text = "Info:";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -158,6 +168,7 @@
             this.button8.TabIndex = 11;
             this.button8.Text = "Info:";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -169,6 +180,7 @@
             this.button9.TabIndex = 12;
             this.button9.Text = "Info:";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -180,6 +192,7 @@
             this.button10.TabIndex = 13;
             this.button10.Text = "Info:";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -191,6 +204,7 @@
             this.button11.TabIndex = 14;
             this.button11.Text = "Info:";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -202,6 +216,7 @@
             this.button12.TabIndex = 15;
             this.button12.Text = "Info:";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button13
             // 
@@ -213,6 +228,7 @@
             this.button13.TabIndex = 16;
             this.button13.Text = "Info:";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button14
             // 
@@ -224,6 +240,7 @@
             this.button14.TabIndex = 17;
             this.button14.Text = "Info:";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button15
             // 
@@ -235,6 +252,7 @@
             this.button15.TabIndex = 18;
             this.button15.Text = "Info:";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button16
             // 
@@ -246,12 +264,36 @@
             this.button16.TabIndex = 19;
             this.button16.Text = "Info:";
             this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // Description
+            // 
+            this.Description.AutoSize = true;
+            this.Description.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Description.Location = new System.Drawing.Point(480, 72);
+            this.Description.Name = "Description";
+            this.Description.Size = new System.Drawing.Size(297, 35);
+            this.Description.TabIndex = 20;
+            this.Description.Text = "The desc will appear here";
+            // 
+            // BestDrawingEver
+            // 
+            this.BestDrawingEver.Image = ((System.Drawing.Image)(resources.GetObject("BestDrawingEver.Image")));
+            this.BestDrawingEver.Location = new System.Drawing.Point(494, 240);
+            this.BestDrawingEver.Name = "BestDrawingEver";
+            this.BestDrawingEver.Size = new System.Drawing.Size(409, 409);
+            this.BestDrawingEver.TabIndex = 21;
+            this.BestDrawingEver.TabStop = false;
+            this.BestDrawingEver.Visible = false;
+            this.BestDrawingEver.Click += new System.EventHandler(this.BestDrawingEver_Click);
             // 
             // Help
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 904);
+            this.Controls.Add(this.BestDrawingEver);
+            this.Controls.Add(this.Description);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
@@ -268,12 +310,12 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Header);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Help";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Help_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BestDrawingEver)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,7 +324,7 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private Label label2;
+        private Label Header;
         private Button button1;
         private Button button2;
         private Button button3;
@@ -299,5 +341,7 @@
         private Button button14;
         private Button button15;
         private Button button16;
+        private Label Description;
+        private PictureBox BestDrawingEver;
     }
 }
