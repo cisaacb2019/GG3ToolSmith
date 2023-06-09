@@ -28,43 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CodeOutput = new System.Windows.Forms.RichTextBox();
+            this.DistanceInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.UnitsComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.WCSComboBox = new System.Windows.Forms.ComboBox();
+            this.IncrementalModeFalse = new System.Windows.Forms.Button();
+            this.IncrementalModeTrue = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SpindleSpeedInput = new System.Windows.Forms.TextBox();
+            this.Leftminus = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.Rightplus = new System.Windows.Forms.Button();
+            this.Upminus = new System.Windows.Forms.Button();
+            this.Downplus = new System.Windows.Forms.Button();
+            this.Forwardplus = new System.Windows.Forms.Button();
+            this.Forwardminus = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.MovementBox = new System.Windows.Forms.ComboBox();
+            this.UnitsButton = new System.Windows.Forms.Button();
+            this.WCSButton = new System.Windows.Forms.Button();
+            this.SpindleSpeedButton = new System.Windows.Forms.Button();
+            this.MovementButton1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.FeedSpeedLabel = new System.Windows.Forms.Label();
+            this.FeedSpeed = new System.Windows.Forms.TextBox();
+            this.MovementButton2 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // CodeOutput
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 339);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1071, 293);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.CodeOutput.Location = new System.Drawing.Point(12, 339);
+            this.CodeOutput.Name = "CodeOutput";
+            this.CodeOutput.Size = new System.Drawing.Size(1071, 293);
+            this.CodeOutput.TabIndex = 0;
+            this.CodeOutput.Text = "";
             // 
-            // textBox1
+            // DistanceInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 148);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 1;
+            this.DistanceInput.Location = new System.Drawing.Point(99, 148);
+            this.DistanceInput.Name = "DistanceInput";
+            this.DistanceInput.Size = new System.Drawing.Size(125, 27);
+            this.DistanceInput.TabIndex = 1;
             // 
             // label1
             // 
@@ -75,16 +84,16 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Distance:";
             // 
-            // comboBox1
+            // UnitsComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.UnitsComboBox.FormattingEnabled = true;
+            this.UnitsComboBox.Items.AddRange(new object[] {
             "Inches",
             "Millimeters"});
-            this.comboBox1.Location = new System.Drawing.Point(87, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(125, 28);
-            this.comboBox1.TabIndex = 3;
+            this.UnitsComboBox.Location = new System.Drawing.Point(87, 12);
+            this.UnitsComboBox.Name = "UnitsComboBox";
+            this.UnitsComboBox.Size = new System.Drawing.Size(125, 28);
+            this.UnitsComboBox.TabIndex = 3;
             // 
             // label2
             // 
@@ -104,38 +113,40 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "WCS:";
             // 
-            // comboBox2
+            // WCSComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.WCSComboBox.FormattingEnabled = true;
+            this.WCSComboBox.Items.AddRange(new object[] {
             "54",
             "55",
             "56",
             "57",
             "58",
             "59"});
-            this.comboBox2.Location = new System.Drawing.Point(87, 46);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(125, 28);
-            this.comboBox2.TabIndex = 5;
+            this.WCSComboBox.Location = new System.Drawing.Point(87, 46);
+            this.WCSComboBox.Name = "WCSComboBox";
+            this.WCSComboBox.Size = new System.Drawing.Size(125, 28);
+            this.WCSComboBox.TabIndex = 5;
             // 
-            // button1
+            // IncrementalModeFalse
             // 
-            this.button1.Location = new System.Drawing.Point(257, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "False";
-            this.button1.UseVisualStyleBackColor = true;
+            this.IncrementalModeFalse.Location = new System.Drawing.Point(257, 80);
+            this.IncrementalModeFalse.Name = "IncrementalModeFalse";
+            this.IncrementalModeFalse.Size = new System.Drawing.Size(94, 29);
+            this.IncrementalModeFalse.TabIndex = 7;
+            this.IncrementalModeFalse.Text = "False";
+            this.IncrementalModeFalse.UseVisualStyleBackColor = true;
+            this.IncrementalModeFalse.Click += new System.EventHandler(this.IncrementalModeFalse_Click);
             // 
-            // button2
+            // IncrementalModeTrue
             // 
-            this.button2.Location = new System.Drawing.Point(157, 80);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "True";
-            this.button2.UseVisualStyleBackColor = true;
+            this.IncrementalModeTrue.Location = new System.Drawing.Point(157, 80);
+            this.IncrementalModeTrue.Name = "IncrementalModeTrue";
+            this.IncrementalModeTrue.Size = new System.Drawing.Size(94, 29);
+            this.IncrementalModeTrue.TabIndex = 8;
+            this.IncrementalModeTrue.Text = "True";
+            this.IncrementalModeTrue.UseVisualStyleBackColor = true;
+            this.IncrementalModeTrue.Click += new System.EventHandler(this.IncrementalModeTrue_Click);
             // 
             // label4
             // 
@@ -155,21 +166,23 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Spindle Speed:";
             // 
-            // textBox2
+            // SpindleSpeedInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(136, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 27);
-            this.textBox2.TabIndex = 10;
+            this.SpindleSpeedInput.Location = new System.Drawing.Point(136, 115);
+            this.SpindleSpeedInput.Name = "SpindleSpeedInput";
+            this.SpindleSpeedInput.Size = new System.Drawing.Size(125, 27);
+            this.SpindleSpeedInput.TabIndex = 10;
             // 
-            // button3
+            // Leftminus
             // 
-            this.button3.Location = new System.Drawing.Point(286, 148);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(132, 29);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Left (y-)";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Leftminus.Location = new System.Drawing.Point(286, 148);
+            this.Leftminus.Name = "Leftminus";
+            this.Leftminus.Size = new System.Drawing.Size(132, 29);
+            this.Leftminus.TabIndex = 12;
+            this.Leftminus.Tag = "[\"Left\",\"-1\"]";
+            this.Leftminus.Text = "Left (y-)";
+            this.Leftminus.UseVisualStyleBackColor = true;
+            this.Leftminus.Click += new System.EventHandler(this.Leftminus_Click);
             // 
             // label6
             // 
@@ -180,99 +193,214 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "To the";
             // 
-            // button4
+            // Rightplus
             // 
-            this.button4.Location = new System.Drawing.Point(424, 148);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(132, 29);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "Right (y+)";
-            this.button4.UseVisualStyleBackColor = true;
+            this.Rightplus.Location = new System.Drawing.Point(424, 148);
+            this.Rightplus.Name = "Rightplus";
+            this.Rightplus.Size = new System.Drawing.Size(132, 29);
+            this.Rightplus.TabIndex = 14;
+            this.Rightplus.Tag = "[Right,1]";
+            this.Rightplus.Text = "Right (y+)";
+            this.Rightplus.UseVisualStyleBackColor = true;
+            this.Rightplus.Click += new System.EventHandler(this.Rightplus_Click);
             // 
-            // button5
+            // Upminus
             // 
-            this.button5.Location = new System.Drawing.Point(562, 148);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(132, 29);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "Up (X+)";
-            this.button5.UseVisualStyleBackColor = true;
+            this.Upminus.Location = new System.Drawing.Point(562, 148);
+            this.Upminus.Name = "Upminus";
+            this.Upminus.Size = new System.Drawing.Size(132, 29);
+            this.Upminus.TabIndex = 15;
+            this.Upminus.Tag = "-1";
+            this.Upminus.Text = "Up (x-)";
+            this.Upminus.UseVisualStyleBackColor = true;
+            this.Upminus.Click += new System.EventHandler(this.Upminus_Click);
             // 
-            // button6
+            // Downplus
             // 
-            this.button6.Location = new System.Drawing.Point(700, 148);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(132, 29);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "Down (X-)";
-            this.button6.UseVisualStyleBackColor = true;
+            this.Downplus.Location = new System.Drawing.Point(700, 148);
+            this.Downplus.Name = "Downplus";
+            this.Downplus.Size = new System.Drawing.Size(132, 29);
+            this.Downplus.TabIndex = 16;
+            this.Downplus.Tag = "1";
+            this.Downplus.Text = "Down (x+)";
+            this.Downplus.UseVisualStyleBackColor = true;
+            this.Downplus.Click += new System.EventHandler(this.Downplus_Click);
             // 
-            // button7
+            // Forwardplus
             // 
-            this.button7.Location = new System.Drawing.Point(976, 148);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(132, 29);
-            this.button7.TabIndex = 18;
-            this.button7.Text = "Backward (z+)";
-            this.button7.UseVisualStyleBackColor = true;
+            this.Forwardplus.Location = new System.Drawing.Point(976, 148);
+            this.Forwardplus.Name = "Forwardplus";
+            this.Forwardplus.Size = new System.Drawing.Size(132, 29);
+            this.Forwardplus.TabIndex = 18;
+            this.Forwardplus.Tag = "1";
+            this.Forwardplus.Text = "Backward (z+)";
+            this.Forwardplus.UseVisualStyleBackColor = true;
+            this.Forwardplus.Click += new System.EventHandler(this.Forwardplus_Click);
             // 
-            // button8
+            // Forwardminus
             // 
-            this.button8.Location = new System.Drawing.Point(838, 148);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(132, 29);
-            this.button8.TabIndex = 17;
-            this.button8.Text = "Forward (z-)";
-            this.button8.UseVisualStyleBackColor = true;
+            this.Forwardminus.Location = new System.Drawing.Point(838, 148);
+            this.Forwardminus.Name = "Forwardminus";
+            this.Forwardminus.Size = new System.Drawing.Size(132, 29);
+            this.Forwardminus.TabIndex = 17;
+            this.Forwardminus.Tag = "-1";
+            this.Forwardminus.Text = "Forward (z-)";
+            this.Forwardminus.UseVisualStyleBackColor = true;
+            this.Forwardminus.Click += new System.EventHandler(this.Forwardminus_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 197);
+            this.label7.Location = new System.Drawing.Point(24, 188);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 20);
             this.label7.TabIndex = 19;
             this.label7.Text = "Movement Type:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // comboBox3
+            // MovementBox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.MovementBox.FormattingEnabled = true;
+            this.MovementBox.Items.AddRange(new object[] {
             "G0 (Instant)",
             "G38.2 (Probe)"});
-            this.comboBox3.Location = new System.Drawing.Point(148, 194);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(125, 28);
-            this.comboBox3.TabIndex = 20;
+            this.MovementBox.Location = new System.Drawing.Point(148, 185);
+            this.MovementBox.Name = "MovementBox";
+            this.MovementBox.Size = new System.Drawing.Size(125, 28);
+            this.MovementBox.TabIndex = 20;
+            this.MovementBox.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // UnitsButton
+            // 
+            this.UnitsButton.Location = new System.Drawing.Point(218, 11);
+            this.UnitsButton.Name = "UnitsButton";
+            this.UnitsButton.Size = new System.Drawing.Size(94, 29);
+            this.UnitsButton.TabIndex = 21;
+            this.UnitsButton.Text = "Write";
+            this.UnitsButton.UseVisualStyleBackColor = true;
+            this.UnitsButton.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // WCSButton
+            // 
+            this.WCSButton.Location = new System.Drawing.Point(218, 45);
+            this.WCSButton.Name = "WCSButton";
+            this.WCSButton.Size = new System.Drawing.Size(94, 29);
+            this.WCSButton.TabIndex = 22;
+            this.WCSButton.Text = "Write";
+            this.WCSButton.UseVisualStyleBackColor = true;
+            this.WCSButton.Click += new System.EventHandler(this.WCSButton_Click);
+            // 
+            // SpindleSpeedButton
+            // 
+            this.SpindleSpeedButton.Location = new System.Drawing.Point(267, 115);
+            this.SpindleSpeedButton.Name = "SpindleSpeedButton";
+            this.SpindleSpeedButton.Size = new System.Drawing.Size(94, 29);
+            this.SpindleSpeedButton.TabIndex = 23;
+            this.SpindleSpeedButton.Text = "Write";
+            this.SpindleSpeedButton.UseVisualStyleBackColor = true;
+            this.SpindleSpeedButton.Click += new System.EventHandler(this.SpindleSpeedButton_Click);
+            // 
+            // MovementButton1
+            // 
+            this.MovementButton1.Location = new System.Drawing.Point(286, 184);
+            this.MovementButton1.Name = "MovementButton1";
+            this.MovementButton1.Size = new System.Drawing.Size(94, 29);
+            this.MovementButton1.TabIndex = 24;
+            this.MovementButton1.Text = "Write";
+            this.MovementButton1.UseVisualStyleBackColor = true;
+            this.MovementButton1.Visible = false;
+            this.MovementButton1.Click += new System.EventHandler(this.MovementButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(1009, 10);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 25);
+            this.button2.TabIndex = 36;
+            this.button2.Text = "Help";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // FeedSpeedLabel
+            // 
+            this.FeedSpeedLabel.AutoSize = true;
+            this.FeedSpeedLabel.Location = new System.Drawing.Point(279, 188);
+            this.FeedSpeedLabel.Name = "FeedSpeedLabel";
+            this.FeedSpeedLabel.Size = new System.Drawing.Size(90, 20);
+            this.FeedSpeedLabel.TabIndex = 37;
+            this.FeedSpeedLabel.Text = "Feed Speed:";
+            this.FeedSpeedLabel.Visible = false;
+            // 
+            // FeedSpeed
+            // 
+            this.FeedSpeed.Location = new System.Drawing.Point(375, 186);
+            this.FeedSpeed.Name = "FeedSpeed";
+            this.FeedSpeed.Size = new System.Drawing.Size(125, 27);
+            this.FeedSpeed.TabIndex = 38;
+            this.FeedSpeed.Text = "30";
+            this.FeedSpeed.Visible = false;
+            // 
+            // MovementButton2
+            // 
+            this.MovementButton2.Location = new System.Drawing.Point(506, 184);
+            this.MovementButton2.Name = "MovementButton2";
+            this.MovementButton2.Size = new System.Drawing.Size(94, 29);
+            this.MovementButton2.TabIndex = 39;
+            this.MovementButton2.Text = "Write";
+            this.MovementButton2.UseVisualStyleBackColor = true;
+            this.MovementButton2.Visible = false;
+            this.MovementButton2.Click += new System.EventHandler(this.MovementButton2_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 217);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 20);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Save Offset:";
             // 
             // SpeedCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 703);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.MovementButton2);
+            this.Controls.Add(this.FeedSpeed);
+            this.Controls.Add(this.FeedSpeedLabel);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.MovementButton1);
+            this.Controls.Add(this.SpindleSpeedButton);
+            this.Controls.Add(this.WCSButton);
+            this.Controls.Add(this.UnitsButton);
+            this.Controls.Add(this.MovementBox);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Forwardplus);
+            this.Controls.Add(this.Forwardminus);
+            this.Controls.Add(this.Downplus);
+            this.Controls.Add(this.Upminus);
+            this.Controls.Add(this.Rightplus);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Leftminus);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.SpindleSpeedInput);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.IncrementalModeTrue);
+            this.Controls.Add(this.IncrementalModeFalse);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.WCSComboBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.UnitsComboBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.DistanceInput);
+            this.Controls.Add(this.CodeOutput);
             this.Name = "SpeedCreator";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.SpeedCreator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,26 +408,35 @@
 
         #endregion
 
-        private RichTextBox richTextBox1;
-        private TextBox textBox1;
+        private RichTextBox CodeOutput;
+        private TextBox DistanceInput;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox UnitsComboBox;
         private Label label2;
         private Label label3;
-        private ComboBox comboBox2;
-        private Button button1;
-        private Button button2;
+        private ComboBox WCSComboBox;
+        private Button IncrementalModeFalse;
+        private Button IncrementalModeTrue;
         private Label label4;
         private Label label5;
-        private TextBox textBox2;
-        private Button button3;
+        private TextBox SpindleSpeedInput;
+        private Button Leftminus;
         private Label label6;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
+        private Button Rightplus;
+        private Button Upminus;
+        private Button Downplus;
+        private Button Forwardplus;
+        private Button Forwardminus;
         private Label label7;
-        private ComboBox comboBox3;
+        private ComboBox MovementBox;
+        private Button UnitsButton;
+        private Button WCSButton;
+        private Button SpindleSpeedButton;
+        private Button MovementButton1;
+        private Button button2;
+        private Label FeedSpeedLabel;
+        private TextBox FeedSpeed;
+        private Button MovementButton2;
+        private Label label8;
     }
 }
