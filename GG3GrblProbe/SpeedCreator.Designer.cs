@@ -101,6 +101,9 @@
             this.WaitDwellButton = new System.Windows.Forms.Button();
             this.WaitDwellLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.Button();
+            this.YesDelete = new System.Windows.Forms.Button();
+            this.NoSaveMe = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CodeOutput
@@ -855,11 +858,48 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // Delete
+            // 
+            this.Delete.Location = new System.Drawing.Point(1029, 339);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(94, 29);
+            this.Delete.TabIndex = 92;
+            this.Delete.Text = "Delete";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
+            // YesDelete
+            // 
+            this.YesDelete.BackColor = System.Drawing.Color.LightGreen;
+            this.YesDelete.Location = new System.Drawing.Point(35, 339);
+            this.YesDelete.Name = "YesDelete";
+            this.YesDelete.Size = new System.Drawing.Size(94, 29);
+            this.YesDelete.TabIndex = 93;
+            this.YesDelete.Text = "Yes";
+            this.YesDelete.UseVisualStyleBackColor = false;
+            this.YesDelete.Visible = false;
+            this.YesDelete.Click += new System.EventHandler(this.YesDelete_Click);
+            // 
+            // NoSaveMe
+            // 
+            this.NoSaveMe.BackColor = System.Drawing.Color.LightCoral;
+            this.NoSaveMe.Location = new System.Drawing.Point(1029, 603);
+            this.NoSaveMe.Name = "NoSaveMe";
+            this.NoSaveMe.Size = new System.Drawing.Size(94, 29);
+            this.NoSaveMe.TabIndex = 94;
+            this.NoSaveMe.Text = "No";
+            this.NoSaveMe.UseVisualStyleBackColor = false;
+            this.NoSaveMe.Visible = false;
+            this.NoSaveMe.Click += new System.EventHandler(this.NoSaveMe_Click);
+            // 
             // SpeedCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 703);
+            this.Controls.Add(this.NoSaveMe);
+            this.Controls.Add(this.YesDelete);
+            this.Controls.Add(this.Delete);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.FeedInputPG);
             this.Controls.Add(this.FeedWriteButton);
@@ -1014,5 +1054,8 @@
         private Button WaitDwellButton;
         private Label WaitDwellLabel;
         private Button button1;
+        private Button Delete;
+        private Button YesDelete;
+        private Button NoSaveMe;
     }
 }

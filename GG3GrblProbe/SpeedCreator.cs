@@ -340,7 +340,7 @@ namespace GG3GrblProbe
             string TolWCS2 = TolerenceWcs2.Text;
             string Tolwcs3 = TolerenceWcs3.Text;
             string Tolerence = TolerenceText.Text;
-            CodeOutput.Text += $"\r\n";
+            CodeOutput.Text += $"\r\nM101 {TolWCS1} {TolWCS2} {Tolwcs3} {TolAxis}{Tolerence}";
         }
 
         private void Expand_Click(object sender, EventArgs e)
@@ -405,10 +405,7 @@ namespace GG3GrblProbe
                 Forwardplus.Visible = true;
                 MovementTypeLabel.Visible = true;
                 MovementBox.Visible = true;
-                FeedSpeedLabel.Visible = true;
                 MovementButton1.Visible = true;
-                FeedSpeed.Visible = true;
-                MovementButton2.Visible = true;
                 FindCenterLabel.Visible = true;
                 CenterAxisLabel.Visible = true;
                 CenterAxis.Visible = true;
@@ -561,7 +558,57 @@ namespace GG3GrblProbe
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            string FilePath = CreateTextDocument();
+            string content = CodeOutput.Text;
+            File.WriteAllText(FilePath, content);
+            Error error = new Error();
+            error.ErrorMessage = "FileSaved"; // Pass the error message to the Error form
+            DialogResult result = error.ShowDialog();
+        }
 
+
+        public string CreateTextDocument()
+        {
+            // Create an instance of SaveFileDialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            // Set the file filter and other properties if needed
+            saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
+            saveFileDialog.Title = "Create Text Document";
+
+            // Show the file dialog and check if the user clicked the OK button
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Create a new text file at the specified path
+                File.WriteAllText(filePath, string.Empty);
+
+                return filePath;
+            }
+
+            return null; // Return null if the user didn't select a file
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            YesDelete.Visible = true;
+            NoSaveMe.Visible = true;
+        }
+
+        private void YesDelete_Click(object sender, EventArgs e)
+        {
+            CodeOutput.Text = "";
+            IncrementalModeTrue.BackColor = Color.LightGray;
+            IncrementalModeFalse.BackColor = Color.LightGray;
+            YesDelete.Visible = false;
+            NoSaveMe.Visible = false;
+        }
+
+        private void NoSaveMe_Click(object sender, EventArgs e)
+        {
+            YesDelete.Visible = false;
+            NoSaveMe.Visible = false;
         }
     }
 }
