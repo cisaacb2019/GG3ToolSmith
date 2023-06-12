@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SelectFile = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // SelectFile
+            // 
+            this.SelectFile.Location = new System.Drawing.Point(12, 12);
+            this.SelectFile.Name = "SelectFile";
+            this.SelectFile.Size = new System.Drawing.Size(259, 49);
+            this.SelectFile.TabIndex = 0;
+            this.SelectFile.Text = "Select file to split";
+            this.SelectFile.UseVisualStyleBackColor = true;
+            this.SelectFile.Click += new System.EventHandler(this.SelectFile_Click);
+            // 
+            // Checkpoint
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(793, 450);
+            this.Controls.Add(this.SelectFile);
+            this.Name = "Checkpoint";
             this.Text = "Checkpoint";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Button SelectFile;
     }
 }
