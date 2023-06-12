@@ -30,6 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.CheckPoint = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -52,11 +53,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // CheckPoint
+            // 
+            this.CheckPoint.Location = new System.Drawing.Point(428, 36);
+            this.CheckPoint.Name = "CheckPoint";
+            this.CheckPoint.Size = new System.Drawing.Size(202, 72);
+            this.CheckPoint.TabIndex = 2;
+            this.CheckPoint.Text = "Manifest Creator";
+            this.CheckPoint.UseVisualStyleBackColor = true;
+            this.CheckPoint.Click += new System.EventHandler(this.CheckPoint_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(644, 450);
+            this.Controls.Add(this.CheckPoint);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Home";
@@ -69,5 +81,6 @@
 
         private Button button1;
         private Button button2;
+        private Button CheckPoint;
     }
 }

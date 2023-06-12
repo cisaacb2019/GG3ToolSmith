@@ -30,5 +30,15 @@ namespace GG3GrblProbe
             speed.Show();
             this.Hide();
         }
+
+        private void CheckPoint_Click(object sender, EventArgs e)
+        {
+            ManifestCreator checkpoint = new ManifestCreator();
+            checkpoint.Show();
+            this.Hide();
+        }
+
+
+
     }
 }
