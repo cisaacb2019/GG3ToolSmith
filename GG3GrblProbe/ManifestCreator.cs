@@ -14,6 +14,7 @@ namespace GG3GrblProbe
     {
         public string savepath;
         public string selectedgcode;
+        public string selectedimage;
         public ManifestCreator()
         {
             InitializeComponent();
@@ -31,16 +32,17 @@ namespace GG3GrblProbe
                     string selectedPath = folderBrowserDialog.SelectedPath;
                     string folderName = FolderNameText.Text;
                     string CodeFolderName = "Code";
-
+                    string ImagesFolderName = "Images";
                     if (!string.IsNullOrEmpty(folderName))
                     {
                         string path = Path.Combine(selectedPath, folderName);
                         string codefolder = Path.Combine(path, CodeFolderName);
-
+                        string ImagesFolderCreate = Path.Combine(path, ImagesFolderName);
                         try
                         {
                             Directory.CreateDirectory(path);
                             Directory.CreateDirectory(codefolder);
+                            Directory.CreateDirectory(ImagesFolderCreate);
                             savepath = path;
                             PageDisplay();
                             MessageBox.Show("Folder created successfully!");
@@ -58,37 +60,39 @@ namespace GG3GrblProbe
             }
         }
 
-private void button6_Click(object sender, EventArgs e)
-{
-    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-    {
-        string selectedPath = folderBrowserDialog.SelectedPath;
-        string codeFolderPath = Path.Combine(selectedPath, "Code");
-
-        if (!Directory.Exists(codeFolderPath))
+        private void button6_Click(object sender, EventArgs e)
         {
-            try
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                Directory.CreateDirectory(codeFolderPath);
-                MessageBox.Show("'Code' folder created successfully.");
-                PageDisplay();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while creating the 'code' folder: " + ex.Message);
-                return;
+                string selectedPath = folderBrowserDialog.SelectedPath;
+                string codeFolderPath = Path.Combine(selectedPath, "Code");
+
+                if (!Directory.Exists(codeFolderPath))
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(codeFolderPath);
+                        MessageBox.Show("'Code' folder created successfully.");
+                        savepath = selectedPath;
+                        PageDisplay();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred while creating the 'code' folder: " + ex.Message);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Folder Selected Successfully!");
+                    savepath = selectedPath;
+                    PageDisplay();
+
+                }
             }
         }
-        else
-        {
-            MessageBox.Show("Folder Selected Successfully!");
-            PageDisplay();
-
-        }
-    }
-}
 
         public void PageDisplay()
         {
@@ -176,31 +180,38 @@ private void button6_Click(object sender, EventArgs e)
 
         private void WriteStepGcode_Click(object sender, EventArgs e)
         {
-            string sourceFilePath = selectedgcode;
-            string codepath = "Code";
-            string targetFolderPath = Path.Combine(savepath, codepath);
+            if (string.IsNullOrEmpty(selectedgcode))
+            {
+                MessageBox.Show("Please select a G-code file!");
+                return;
+            }
 
-            if (File.Exists(sourceFilePath))
+            string sourceFilePath = selectedgcode;
+            string codeFolderPath = Path.Combine(savepath, "Code");
+            string selectedGcodeFileName = Path.GetFileName(sourceFilePath);
+            string targetFilePath = Path.Combine(codeFolderPath, selectedGcodeFileName);
+
+            if (File.Exists(targetFilePath))
             {
-                try
-                {
-                    string targetFilePath = Path.Combine(targetFolderPath,sourceFilePath);
-                    File.Move(sourceFilePath, targetFilePath);
-                    MessageBox.Show("File wrote successfully!");
-                    OutputCode.Text += $"\r\n      step_gcode: Code/{Path.GetFileName(sourceFilePath)}\r\n";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred while cutting the file: {ex.Message}");
-                }
+                MessageBox.Show("A G-code file with the same name already exists in the 'Code' folder. Please choose a different file or rename the existing one.");
+                return;
             }
-            else
+
+            try
             {
-                MessageBox.Show("Selected file does not exist!");
+                Directory.CreateDirectory(codeFolderPath);
+                File.Move(sourceFilePath, targetFilePath);
+                MessageBox.Show("G-code file moved successfully!");
+                OutputCode.Text += $"\r\n      step_gcode: Code/{selectedGcodeFileName}\r\n";
             }
-            stepGcodeSelect.BackColor = Color.White;
-            WriteStepGcode.BackColor = Color.White;
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while moving the G-code file: " + ex.Message);
+            }
+
+            selectedgcode = null; // Reset the selected G-code file path
         }
+
 
         private void OutputCode_TextChanged(object sender, EventArgs e)
         {
@@ -236,6 +247,69 @@ private void button6_Click(object sender, EventArgs e)
         {
             this.Height = 929;
             this.Width = 1400;
+        }
+
+        private void StepMarkdownInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StepMarkdownWrite_Click(object sender, EventArgs e)
+        {
+            string StepMarkDownText = StepMarkdownInput.Text;
+            OutputCode.Text += $"\r\n step_markdown: | {StepMarkDownText}";
+        }
+
+        private void TimeoutWrite_Click(object sender, EventArgs e)
+        {
+            OutputCode.Text += $"timeout:{timeoutwriter}";
+        }
+
+        private void ImageWriter_Click(object sender, EventArgs e)
+        {
+                if (string.IsNullOrEmpty(selectedimage))
+                {
+                    MessageBox.Show("Please select an image file!");
+                    return;
+                }
+
+                string selectedPath = savepath;
+                string imageFolderPath = Path.Combine(selectedPath, "Images");
+                string selectedImageName = Path.GetFileName(selectedimage);
+                string destinationPath = Path.Combine(imageFolderPath, selectedImageName);
+
+                if (File.Exists(destinationPath))
+                {
+                    MessageBox.Show("An image with the same name already exists in the 'Images' folder. Please choose a different image or rename the existing one.");
+                    return;
+                }
+
+                try
+                {
+                    Directory.CreateDirectory(imageFolderPath);
+                    File.Move(selectedimage, destinationPath);
+                    MessageBox.Show("Image moved successfully!");
+                    OutputCode.Text += $"\r\n      step_image: Images/{selectedImageName}";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while moving the image: " + ex.Message);
+                }
+
+                selectedimage = null; // Reset the selected image path
+
+        }
+
+        private void SelectImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                selectedimage = selectedFilePath;
+                MessageBox.Show("Image selected successfully!");
+            }
         }
     }
 }

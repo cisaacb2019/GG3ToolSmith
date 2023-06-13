@@ -44,6 +44,12 @@
             this.OutputCode = new System.Windows.Forms.RichTextBox();
             this.SaveOutput = new System.Windows.Forms.Button();
             this.AdvSettings = new System.Windows.Forms.Button();
+            this.StepMarkdownInput = new System.Windows.Forms.RichTextBox();
+            this.StepMarkdownWrite = new System.Windows.Forms.Button();
+            this.timeoutwriter = new System.Windows.Forms.TextBox();
+            this.TimeoutWrite = new System.Windows.Forms.Button();
+            this.SelectImage = new System.Windows.Forms.Button();
+            this.ImageWriter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // JobNameInput
@@ -218,11 +224,75 @@
             this.AdvSettings.Visible = false;
             this.AdvSettings.Click += new System.EventHandler(this.AdvSettings_Click);
             // 
+            // StepMarkdownInput
+            // 
+            this.StepMarkdownInput.Location = new System.Drawing.Point(794, 36);
+            this.StepMarkdownInput.Name = "StepMarkdownInput";
+            this.StepMarkdownInput.Size = new System.Drawing.Size(576, 120);
+            this.StepMarkdownInput.TabIndex = 16;
+            this.StepMarkdownInput.Text = "Enter Step Markdown Text:";
+            this.StepMarkdownInput.TextChanged += new System.EventHandler(this.StepMarkdownInput_TextChanged);
+            // 
+            // StepMarkdownWrite
+            // 
+            this.StepMarkdownWrite.Location = new System.Drawing.Point(794, 160);
+            this.StepMarkdownWrite.Name = "StepMarkdownWrite";
+            this.StepMarkdownWrite.Size = new System.Drawing.Size(576, 29);
+            this.StepMarkdownWrite.TabIndex = 17;
+            this.StepMarkdownWrite.Text = "Write:";
+            this.StepMarkdownWrite.UseVisualStyleBackColor = true;
+            this.StepMarkdownWrite.Click += new System.EventHandler(this.StepMarkdownWrite_Click);
+            // 
+            // timeoutwriter
+            // 
+            this.timeoutwriter.Location = new System.Drawing.Point(794, 195);
+            this.timeoutwriter.Name = "timeoutwriter";
+            this.timeoutwriter.Size = new System.Drawing.Size(576, 27);
+            this.timeoutwriter.TabIndex = 18;
+            this.timeoutwriter.Text = "Enter Timeout:";
+            this.timeoutwriter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TimeoutWrite
+            // 
+            this.TimeoutWrite.Location = new System.Drawing.Point(794, 228);
+            this.TimeoutWrite.Name = "TimeoutWrite";
+            this.TimeoutWrite.Size = new System.Drawing.Size(576, 29);
+            this.TimeoutWrite.TabIndex = 19;
+            this.TimeoutWrite.Text = "Write:";
+            this.TimeoutWrite.UseVisualStyleBackColor = true;
+            this.TimeoutWrite.Click += new System.EventHandler(this.TimeoutWrite_Click);
+            // 
+            // SelectImage
+            // 
+            this.SelectImage.Location = new System.Drawing.Point(794, 263);
+            this.SelectImage.Name = "SelectImage";
+            this.SelectImage.Size = new System.Drawing.Size(576, 29);
+            this.SelectImage.TabIndex = 20;
+            this.SelectImage.Text = "Select Step Image:";
+            this.SelectImage.UseVisualStyleBackColor = true;
+            this.SelectImage.Click += new System.EventHandler(this.SelectImage_Click);
+            // 
+            // ImageWriter
+            // 
+            this.ImageWriter.Location = new System.Drawing.Point(794, 298);
+            this.ImageWriter.Name = "ImageWriter";
+            this.ImageWriter.Size = new System.Drawing.Size(576, 29);
+            this.ImageWriter.TabIndex = 21;
+            this.ImageWriter.Text = "Write:";
+            this.ImageWriter.UseVisualStyleBackColor = true;
+            this.ImageWriter.Click += new System.EventHandler(this.ImageWriter_Click);
+            // 
             // ManifestCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 874);
+            this.Controls.Add(this.ImageWriter);
+            this.Controls.Add(this.SelectImage);
+            this.Controls.Add(this.TimeoutWrite);
+            this.Controls.Add(this.timeoutwriter);
+            this.Controls.Add(this.StepMarkdownWrite);
+            this.Controls.Add(this.StepMarkdownInput);
             this.Controls.Add(this.AdvSettings);
             this.Controls.Add(this.SaveOutput);
             this.Controls.Add(this.OutputCode);
@@ -264,5 +334,11 @@
         private RichTextBox OutputCode;
         private Button SaveOutput;
         private Button AdvSettings;
+        private RichTextBox StepMarkdownInput;
+        private Button StepMarkdownWrite;
+        private TextBox timeoutwriter;
+        private Button TimeoutWrite;
+        private Button SelectImage;
+        private Button ImageWriter;
     }
 }
