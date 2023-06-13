@@ -42,6 +42,7 @@
             this.stepGcodeSelect = new System.Windows.Forms.Button();
             this.WriteStepGcode = new System.Windows.Forms.Button();
             this.OutputCode = new System.Windows.Forms.RichTextBox();
+            this.SaveOutput = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // JobNameInput
@@ -133,7 +134,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(12, 705);
+            this.button5.Location = new System.Drawing.Point(12, 160);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(776, 85);
             this.button5.TabIndex = 8;
@@ -143,7 +144,7 @@
             // 
             // FolderNameText
             // 
-            this.FolderNameText.Location = new System.Drawing.Point(12, 672);
+            this.FolderNameText.Location = new System.Drawing.Point(12, 127);
             this.FolderNameText.Name = "FolderNameText";
             this.FolderNameText.Size = new System.Drawing.Size(776, 27);
             this.FolderNameText.TabIndex = 9;
@@ -153,7 +154,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Location = new System.Drawing.Point(12, 581);
+            this.button6.Location = new System.Drawing.Point(12, 36);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(776, 85);
             this.button6.TabIndex = 10;
@@ -187,15 +188,29 @@
             // 
             this.OutputCode.Location = new System.Drawing.Point(12, 406);
             this.OutputCode.Name = "OutputCode";
-            this.OutputCode.Size = new System.Drawing.Size(776, 169);
+            this.OutputCode.Size = new System.Drawing.Size(776, 381);
             this.OutputCode.TabIndex = 13;
             this.OutputCode.Text = "";
+            this.OutputCode.TextChanged += new System.EventHandler(this.OutputCode_TextChanged);
+            // 
+            // SaveOutput
+            // 
+            this.SaveOutput.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SaveOutput.Location = new System.Drawing.Point(12, 793);
+            this.SaveOutput.Name = "SaveOutput";
+            this.SaveOutput.Size = new System.Drawing.Size(776, 69);
+            this.SaveOutput.TabIndex = 14;
+            this.SaveOutput.Text = "Save Manifest:";
+            this.SaveOutput.UseVisualStyleBackColor = true;
+            this.SaveOutput.Visible = false;
+            this.SaveOutput.Click += new System.EventHandler(this.SaveOutput_Click);
             // 
             // ManifestCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 1055);
+            this.Controls.Add(this.SaveOutput);
             this.Controls.Add(this.OutputCode);
             this.Controls.Add(this.WriteStepGcode);
             this.Controls.Add(this.stepGcodeSelect);
@@ -233,5 +248,6 @@
         private Button stepGcodeSelect;
         private Button WriteStepGcode;
         private RichTextBox OutputCode;
+        private Button SaveOutput;
     }
 }

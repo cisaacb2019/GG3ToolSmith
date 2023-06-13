@@ -56,20 +56,38 @@ namespace GG3GrblProbe
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            {
-                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+private void button6_Click(object sender, EventArgs e)
+{
+    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
 
-                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string selectedPath = folderBrowserDialog.SelectedPath;
-                    savepath = selectedPath;
-                    MessageBox.Show("Folder selected successfully!");
-                    PageDisplay();
-                }
+    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+    {
+        string selectedPath = folderBrowserDialog.SelectedPath;
+        string codeFolderPath = Path.Combine(selectedPath, "Code");
+
+        if (!Directory.Exists(codeFolderPath))
+        {
+            try
+            {
+                Directory.CreateDirectory(codeFolderPath);
+                MessageBox.Show("'Code' folder created successfully.");
+                PageDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while creating the 'code' folder: " + ex.Message);
+                return;
             }
         }
+        else
+        {
+            MessageBox.Show("Folder Selected Successfully!");
+            PageDisplay();
+
+        }
+    }
+}
+
         public void PageDisplay()
         {
             button6.Visible = false;
@@ -86,6 +104,7 @@ namespace GG3GrblProbe
             StepTextWrite.Visible = true;
             stepGcodeSelect.Visible = true;
             WriteStepGcode.Visible = true;
+            SaveOutput.Visible = true;
 
         }
 
@@ -103,7 +122,7 @@ namespace GG3GrblProbe
         private void JobTextWrite_Click(object sender, EventArgs e)
         {
             string jobtext = jobTextInput.Text;
-            OutputCode.Text += $"\r\n  job_text: {jobtext}\r\n\r\n  job_steps:\r\n\r\n";
+            OutputCode.Text += $"\r\n  job_text: {jobtext}\r\n\r\n  job_steps:\r\n";
             jobTextInput.Text = "Enter Job Text:";
             jobTextInput.BackColor = Color.White;
             JobTextWrite.BackColor = Color.White;
@@ -114,7 +133,7 @@ namespace GG3GrblProbe
         private void stepNameWrite_Click(object sender, EventArgs e)
         {
             string stepname = stepNameInput.Text;
-            OutputCode.Text += $"    - step_name: {stepname}";
+            OutputCode.Text += $"\r\n    - step_name: {stepname}";
             stepNameInput.Text = "Enter Step Name:";
             stepNameInput.BackColor = Color.White;
             stepNameWrite.BackColor = Color.White;
@@ -175,6 +194,36 @@ namespace GG3GrblProbe
             }
             stepGcodeSelect.BackColor = Color.White;
             WriteStepGcode.BackColor = Color.White;
+        }
+
+        private void OutputCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveOutput_Click(object sender, EventArgs e)
+        {
+            {
+                string outputText = OutputCode.Text;
+                string manifestpath = "Manifest.yml";
+                string filePath = savepath;
+                string followpath = Path.Combine(filePath, manifestpath);
+
+                try
+                {
+                    // Create a StreamWriter to write the text to the file
+                    using (StreamWriter writer = new StreamWriter(followpath))
+                    {
+                        writer.Write(outputText);
+                    }
+
+                    Console.WriteLine("manifest.yml file created successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred while creating the manifest.yml file: " + ex.Message);
+                }
+            }
         }
     }
 }
