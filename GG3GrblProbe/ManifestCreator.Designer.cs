@@ -43,6 +43,7 @@
             this.WriteStepGcode = new System.Windows.Forms.Button();
             this.OutputCode = new System.Windows.Forms.RichTextBox();
             this.SaveOutput = new System.Windows.Forms.Button();
+            this.AdvSettings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // JobNameInput
@@ -191,6 +192,7 @@
             this.OutputCode.Size = new System.Drawing.Size(776, 381);
             this.OutputCode.TabIndex = 13;
             this.OutputCode.Text = "";
+            this.OutputCode.Visible = false;
             this.OutputCode.TextChanged += new System.EventHandler(this.OutputCode_TextChanged);
             // 
             // SaveOutput
@@ -205,11 +207,23 @@
             this.SaveOutput.Visible = false;
             this.SaveOutput.Click += new System.EventHandler(this.SaveOutput_Click);
             // 
+            // AdvSettings
+            // 
+            this.AdvSettings.Location = new System.Drawing.Point(12, 1);
+            this.AdvSettings.Name = "AdvSettings";
+            this.AdvSettings.Size = new System.Drawing.Size(193, 29);
+            this.AdvSettings.TabIndex = 15;
+            this.AdvSettings.Text = "Advanced Settings:";
+            this.AdvSettings.UseVisualStyleBackColor = true;
+            this.AdvSettings.Visible = false;
+            this.AdvSettings.Click += new System.EventHandler(this.AdvSettings_Click);
+            // 
             // ManifestCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 1055);
+            this.ClientSize = new System.Drawing.Size(1382, 874);
+            this.Controls.Add(this.AdvSettings);
             this.Controls.Add(this.SaveOutput);
             this.Controls.Add(this.OutputCode);
             this.Controls.Add(this.WriteStepGcode);
@@ -249,5 +263,6 @@
         private Button WriteStepGcode;
         private RichTextBox OutputCode;
         private Button SaveOutput;
+        private Button AdvSettings;
     }
 }

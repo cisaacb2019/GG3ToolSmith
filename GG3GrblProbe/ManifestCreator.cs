@@ -17,6 +17,8 @@ namespace GG3GrblProbe
         public ManifestCreator()
         {
             InitializeComponent();
+            this.Height = 305;
+            this.Width = 818;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -105,7 +107,11 @@ private void button6_Click(object sender, EventArgs e)
             stepGcodeSelect.Visible = true;
             WriteStepGcode.Visible = true;
             SaveOutput.Visible = true;
-
+            OutputCode.Visible = true;
+            AdvSettings.Visible = true;
+            //rescale form//
+            this.Height = 929;
+            this.Width = 818;
         }
 
         private void jobNameWrite_Click(object sender, EventArgs e)
@@ -224,6 +230,12 @@ private void button6_Click(object sender, EventArgs e)
                     Console.WriteLine("An error occurred while creating the manifest.yml file: " + ex.Message);
                 }
             }
+        }
+
+        private void AdvSettings_Click(object sender, EventArgs e)
+        {
+            this.Height = 929;
+            this.Width = 1400;
         }
     }
 }
