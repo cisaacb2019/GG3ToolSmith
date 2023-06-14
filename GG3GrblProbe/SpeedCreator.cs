@@ -610,5 +610,10 @@ namespace GG3GrblProbe
             YesDelete.Visible = false;
             NoSaveMe.Visible = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

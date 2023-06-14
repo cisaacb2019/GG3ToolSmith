@@ -50,6 +50,7 @@
             this.TimeoutWrite = new System.Windows.Forms.Button();
             this.SelectImage = new System.Windows.Forms.Button();
             this.ImageWriter = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // JobNameInput
@@ -151,6 +152,7 @@
             // 
             // FolderNameText
             // 
+            this.FolderNameText.BackColor = System.Drawing.Color.Aquamarine;
             this.FolderNameText.Location = new System.Drawing.Point(12, 127);
             this.FolderNameText.Name = "FolderNameText";
             this.FolderNameText.Size = new System.Drawing.Size(776, 27);
@@ -282,11 +284,25 @@
             this.ImageWriter.UseVisualStyleBackColor = true;
             this.ImageWriter.Click += new System.EventHandler(this.ImageWriter_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(689, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 25);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Help";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // ManifestCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 874);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.ImageWriter);
             this.Controls.Add(this.SelectImage);
             this.Controls.Add(this.TimeoutWrite);
@@ -340,5 +356,6 @@
         private Button TimeoutWrite;
         private Button SelectImage;
         private Button ImageWriter;
+        private Button button2;
     }
 }
