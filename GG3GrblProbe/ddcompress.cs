@@ -17,6 +17,7 @@ namespace GG3GrblProbe
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
             openFileDialog.Title = "Select Files to Compress";
+            openFileDialog.Filter = "YML files (*.yml)|*.yml";
 
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             folderBrowserDialog.Description = "Select Folders to Move";
