@@ -19,57 +19,80 @@ namespace GG3GrblProbe
             openFileDialog.Title = "Select Files to Compress";
             openFileDialog.Filter = "YML files (*.yml)|*.yml";
 
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            folderBrowserDialog.Description = "Select Folders to Move";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK && folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string[] selectedFiles = openFileDialog.FileNames;
-                string[] selectedFolders = { folderBrowserDialog.SelectedPath };
+                string firstSelectedYmlFile = selectedFiles[0];
+                string initialFolder = Path.GetDirectoryName(firstSelectedYmlFile);
 
-                if (selectedFiles.Length > 0 || selectedFolders.Length > 0)
+                FolderBrowserDialog firstFolderDialog = new FolderBrowserDialog();
+                firstFolderDialog.Description = "Select the First Folder to Move";
+                firstFolderDialog.ShowNewFolderButton = false;
+                firstFolderDialog.RootFolder = Environment.SpecialFolder.Desktop;
+                firstFolderDialog.SelectedPath = initialFolder;
+
+                if (firstFolderDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Create a zip file using the current date and time as the file name
-                    string zipFileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip";
-                    string zipFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), zipFileName);
+                    string[] selectedFolders = { firstFolderDialog.SelectedPath };
 
-                    try
+                    string secondFolderInitialPath = initialFolder;
+
+                    FolderBrowserDialog secondFolderDialog = new FolderBrowserDialog();
+                    secondFolderDialog.Description = "Select the Second Folder to Move";
+                    secondFolderDialog.ShowNewFolderButton = false;
+                    secondFolderDialog.RootFolder = Environment.SpecialFolder.Desktop;
+                    secondFolderDialog.SelectedPath = secondFolderInitialPath;
+
+                    if (secondFolderDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // Create a new zip file
-                        using (ZipFile zip = new ZipFile(zipFilePath))
+                        Array.Resize(ref selectedFolders, selectedFolders.Length + 1);
+                        selectedFolders[selectedFolders.Length - 1] = secondFolderDialog.SelectedPath;
+
+                        if (selectedFiles.Length > 0 || selectedFolders.Length > 0)
                         {
-                            // Add individual files to the zip file
-                            foreach (string file in selectedFiles)
-                            {
-                                if (File.Exists(file))
-                                {
-                                    zip.AddFile(file, "");
-                                }
-                            }
+                            // Create a zip file using the current date and time as the file name
+                            string zipFileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip";
+                            string zipFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), zipFileName);
 
-                            // Add selected folders and their contents to the zip file
-                            foreach (string folder in selectedFolders)
+                            try
                             {
-                                if (Directory.Exists(folder))
+                                // Create a new zip file
+                                using (ZipFile zip = new ZipFile(zipFilePath))
                                 {
-                                    zip.AddDirectory(folder, Path.GetFileName(folder));
-                                }
-                            }
+                                    // Add individual files to the zip file
+                                    foreach (string file in selectedFiles)
+                                    {
+                                        if (File.Exists(file))
+                                        {
+                                            zip.AddFile(file, "");
+                                        }
+                                    }
 
-                            // Save the zip file
-                            zip.Save();
+                                    // Add selected folders and their contents to the zip file
+                                    foreach (string folder in selectedFolders)
+                                    {
+                                        if (Directory.Exists(folder))
+                                        {
+                                            zip.AddDirectory(folder, Path.GetFileName(folder));
+                                        }
+                                    }
+
+                                    // Save the zip file
+                                    zip.Save();
+                                }
+
+                                MessageBox.Show("Files and folders zipped successfully.");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("An error occurred while zipping files and folders: " + ex.Message);
+                            }
                         }
-
-                        MessageBox.Show("Files zipped successfully.");
+                        else
+                        {
+                            MessageBox.Show("No files or folders selected.");
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred while zipping files: " + ex.Message);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No files or folders selected.");
                 }
             }
         }
