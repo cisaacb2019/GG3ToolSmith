@@ -93,7 +93,7 @@ namespace GG3GrblProbe
                             }
                         }
                         else
-                        {
+                        { 
                             MessageBox.Show("No files or folders selected.");
                         }
                     }
