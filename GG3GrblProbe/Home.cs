@@ -38,7 +38,11 @@ namespace GG3GrblProbe
             this.Hide();
         }
 
-
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ddcompress compressor = new ddcompress();
+            compressor.Show();
+            this.Hide();
+        }
     }
 }
