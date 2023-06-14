@@ -51,7 +51,7 @@ namespace GG3GrblProbe
                         if (selectedFiles.Length > 0 || selectedFolders.Length > 0)
                         {
                             // Create a zip file using the current date and time as the file name
-                            string zipFileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip";
+                            string zipFileName = TextName.Text + ".zip";
                             string zipFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), zipFileName);
 
                             try
@@ -80,6 +80,10 @@ namespace GG3GrblProbe
                                     // Save the zip file
                                     zip.Save();
                                 }
+
+                                // Rename the zip file to a .dd file
+                                string newFilePath = Path.ChangeExtension(zipFilePath, ".dd");
+                                File.Move(zipFilePath, newFilePath);
 
                                 MessageBox.Show("Files and folders zipped successfully.");
                             }

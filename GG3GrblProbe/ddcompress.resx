@@ -58,6 +58,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>The button below will allow you to compress files into the dd file required to run the program with ddcut, please note dont select the folder you will need to drag select all the items: the code folder, the image folder and the manifest then hit continue to proceed.</value>
+    <value>The button below will allow you to compress files into the dd file required to run the program with ddcut, please note you will first select the manifest file, next select the code FOLDER, and the third one select the image FOLDER. After it would be able to rename the folder, use the compress button after you enter the name of .dd to use.</value>
   </data>
 </root>
