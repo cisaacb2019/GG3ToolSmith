@@ -62,37 +62,54 @@ namespace GG3GrblProbe
 
         private void button6_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                string selectedPath = folderBrowserDialog.SelectedPath;
-                string codeFolderPath = Path.Combine(selectedPath, "Code");
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "YAML Files (*.yml;*.yaml)|*.yml;*.yaml";
+                openFileDialog.Title = "Select manifest.yml File";
+                openFileDialog.CheckFileExists = true;
+                openFileDialog.CheckPathExists = true;
 
-                if (!Directory.Exists(codeFolderPath))
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    string selectedFilePath = openFileDialog.FileName;
+                    string selectedPath = Path.GetDirectoryName(selectedFilePath);
+                    string codeFolderPath = Path.Combine(selectedPath, "Code");
+                    savepath = selectedPath;
+
+                    if (!Directory.Exists(codeFolderPath))
                     {
-                        Directory.CreateDirectory(codeFolderPath);
-                        MessageBox.Show("'Code' folder created successfully.");
-                        savepath = selectedPath;
+                        try
+                        {
+                            Directory.CreateDirectory(codeFolderPath);
+                            MessageBox.Show("'Code' folder created successfully.");
+                            PageDisplay();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("An error occurred while creating the 'code' folder: " + ex.Message);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Folder Selected Successfully!");
                         PageDisplay();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred while creating the 'code' folder: " + ex.Message);
-                        return;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Folder Selected Successfully!");
-                    savepath = selectedPath;
-                    PageDisplay();
 
+                    if (Path.GetFileName(selectedFilePath).Equals("manifest.yml", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Read the YAML file and display its content in the output code box
+                        ReadYamlFile(selectedFilePath);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a file named 'manifest.yml'.");
+                    }
                 }
             }
         }
+
+
 
         public void PageDisplay()
         {
@@ -121,7 +138,7 @@ namespace GG3GrblProbe
         private void jobNameWrite_Click(object sender, EventArgs e)
         {
             string jobName = JobNameInput.Text;
-            OutputCode.Text += $"- job_name: {jobName}";
+            OutputCode.Text += $"\r\n- job_name: {jobName}";
             JobNameInput.Text = "Enter Job Name:";
             JobNameInput.BackColor = Color.White;
             jobNameWrite.BackColor = Color.White;
@@ -220,28 +237,27 @@ namespace GG3GrblProbe
 
         private void SaveOutput_Click(object sender, EventArgs e)
         {
+            string outputText = OutputCode.Text;
+            string manifestPath = "Manifest.yml";
+            string filePath = savepath;
+            string fullPath = Path.Combine(filePath, manifestPath);
+
+            try
             {
-                string outputText = OutputCode.Text;
-                string manifestpath = "Manifest.yml";
-                string filePath = savepath;
-                string followpath = Path.Combine(filePath, manifestpath);
-
-                try
+                // Create a StreamWriter to write the text to the file, overwriting existing content
+                using (StreamWriter writer = new StreamWriter(fullPath, false))
                 {
-                    // Create a StreamWriter to write the text to the file
-                    using (StreamWriter writer = new StreamWriter(followpath))
-                    {
-                        writer.Write(outputText);
-                    }
+                    writer.Write(outputText);
+                }
 
-                    Console.WriteLine("manifest.yml file created successfully.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occurred while creating the manifest.yml file: " + ex.Message);
-                }
+                MessageBox.Show("manifest.yml file overwritten successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while overwriting the manifest.yml file: " + ex.Message);
             }
         }
+
 
         private void AdvSettings_Click(object sender, EventArgs e)
         {
@@ -267,36 +283,36 @@ namespace GG3GrblProbe
 
         private void ImageWriter_Click(object sender, EventArgs e)
         {
-                if (string.IsNullOrEmpty(selectedimage))
-                {
-                    MessageBox.Show("Please select an image file!");
-                    return;
-                }
+            if (string.IsNullOrEmpty(selectedimage))
+            {
+                MessageBox.Show("Please select an image file!");
+                return;
+            }
 
-                string selectedPath = savepath;
-                string imageFolderPath = Path.Combine(selectedPath, "Images");
-                string selectedImageName = Path.GetFileName(selectedimage);
-                string destinationPath = Path.Combine(imageFolderPath, selectedImageName);
+            string selectedPath = savepath;
+            string imageFolderPath = Path.Combine(selectedPath, "Images");
+            string selectedImageName = Path.GetFileName(selectedimage);
+            string destinationPath = Path.Combine(imageFolderPath, selectedImageName);
 
-                if (File.Exists(destinationPath))
-                {
-                    MessageBox.Show("An image with the same name already exists in the 'Images' folder. Please choose a different image or rename the existing one.");
-                    return;
-                }
+            if (File.Exists(destinationPath))
+            {
+                MessageBox.Show("An image with the same name already exists in the 'Images' folder. Please choose a different image or rename the existing one.");
+                return;
+            }
 
-                try
-                {
-                    Directory.CreateDirectory(imageFolderPath);
-                    File.Move(selectedimage, destinationPath);
-                    MessageBox.Show("Image moved successfully!");
-                    OutputCode.Text += $"\r\n      step_image: Images/{selectedImageName}";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while moving the image: " + ex.Message);
-                }
+            try
+            {
+                Directory.CreateDirectory(imageFolderPath);
+                File.Move(selectedimage, destinationPath);
+                MessageBox.Show("Image moved successfully!");
+                OutputCode.Text += $"\r\n      step_image: Images/{selectedImageName}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while moving the image: " + ex.Message);
+            }
 
-                selectedimage = null; // Reset the selected image path
+            selectedimage = null; // Reset the selected image path
 
         }
 
@@ -310,6 +326,27 @@ namespace GG3GrblProbe
                 selectedimage = selectedFilePath;
                 MessageBox.Show("Image selected successfully!");
             }
+        }
+
+        private void ReadYamlFile(string filePath)
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(filePath);
+
+                string yamlContent = string.Join(Environment.NewLine, lines);
+
+                OutputCode.Text = yamlContent;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while reading the YAML file: " + ex.Message);
+            }
+        }
+
+        private void ManifestCreator_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
