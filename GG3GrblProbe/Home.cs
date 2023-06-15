@@ -38,7 +38,18 @@ namespace GG3GrblProbe
             this.Hide();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ddcompress compressor = new ddcompress();
+            compressor.Show();
+            this.Hide();
+        }
 
-
+        private void CommandCenter_Click(object sender, EventArgs e)
+        {
+            CommandCenter commandcenter = new CommandCenter();
+            commandcenter.Show();
+            this.Hide();
+        }
     }
 }
