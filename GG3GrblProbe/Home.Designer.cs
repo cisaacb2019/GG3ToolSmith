@@ -32,6 +32,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.CheckPoint = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.CommandCenter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -74,11 +75,22 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // CommandCenter
+            // 
+            this.CommandCenter.Location = new System.Drawing.Point(220, 114);
+            this.CommandCenter.Name = "CommandCenter";
+            this.CommandCenter.Size = new System.Drawing.Size(202, 72);
+            this.CommandCenter.TabIndex = 4;
+            this.CommandCenter.Text = "Command Center";
+            this.CommandCenter.UseVisualStyleBackColor = true;
+            this.CommandCenter.Click += new System.EventHandler(this.CommandCenter_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 450);
+            this.Controls.Add(this.CommandCenter);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.CheckPoint);
             this.Controls.Add(this.button2);
@@ -95,5 +107,6 @@
         private Button button2;
         private Button CheckPoint;
         private Button button3;
+        private Button CommandCenter;
     }
 }

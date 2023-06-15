@@ -15,39 +15,25 @@ namespace GG3GrblProbe
 
         private void CommandCenter_Load(object sender, EventArgs e)
         {
-            // Find the Arduino COM port automatically
-            string comPort = FindArduinoPort();
-            if (comPort == null)
+            // Get the list of available COM ports
+            string[] comPorts = SerialPort.GetPortNames();
+
+            if (comPorts.Length == 0)
             {
-                MessageBox.Show("Arduino not found. Make sure it is connected.");
+                MessageBox.Show("No COM ports found. Make sure the Arduino is connected.");
                 return;
             }
 
-            // Configure the serial port
-            serialPort = new SerialPort(comPort, 115200);
-            serialPort.Open();
-
-            // Send commands to the Arduino
-            SendCommand("G90"); // Example GRBL command
-
-            // Close the serial port
-            serialPort.Close();
+            // Populate the dropdown list
+            comboBoxPortList.Items.AddRange(comPorts);
+            comboBoxPortList.SelectedIndex = 0; // Select the first port by default
         }
 
-        private string FindArduinoPort()
-        {
-            string[] comPorts = SerialPort.GetPortNames();
-            foreach (string port in comPorts)
-            {
-                // Customize the condition if needed
-                if (port.Contains("Arduino"))
-                {
-                    MessageBox.Show("Arduino found on port: " + port);
-                    return port;
-                }
-            }
 
-            return null;
+        private string FindSelectedPort()
+        {
+            string selectedPort = comboBoxPortList.SelectedItem as string;
+            return selectedPort;
         }
 
         private void SendCommand(string command)
@@ -55,6 +41,27 @@ namespace GG3GrblProbe
             // Write the command to the serial port
             serialPort.WriteLine(command);
             MessageBox.Show("Sent command: " + command);
+        }
+
+        private void buttonDetect_Click_1(object sender, EventArgs e)
+        {
+            string comPort = FindSelectedPort();
+            if (comPort == null)
+            {
+                MessageBox.Show("No COM port selected. Please choose a port.");
+                return;
+            }
+            string CommandToSend = CommandSend.Text;
+            // Configure the serial port
+            serialPort = new SerialPort(comPort, 115200);
+            serialPort.BaudRate = 115200; // Set the Baud rate to match the Arduino configuration
+            serialPort.Open();
+
+            // Send commands to the Arduino
+            SendCommand($"{CommandToSend}"); // Example GRBL command
+
+            // Close the serial port
+            serialPort.Close();
         }
     }
 }

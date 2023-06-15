@@ -44,5 +44,12 @@ namespace GG3GrblProbe
             compressor.Show();
             this.Hide();
         }
+
+        private void CommandCenter_Click(object sender, EventArgs e)
+        {
+            CommandCenter commandcenter = new CommandCenter();
+            commandcenter.Show();
+            this.Hide();
+        }
     }
 }
