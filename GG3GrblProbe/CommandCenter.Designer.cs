@@ -39,6 +39,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.IncrementButton = new System.Windows.Forms.Button();
+            this.ContinuousButton = new System.Windows.Forms.Button();
+            this.IncrementMovement = new System.Windows.Forms.TextBox();
+            this.mmlabel = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonDetect
@@ -94,6 +99,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "<";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -104,6 +110,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = ">";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -114,6 +121,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Up";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -124,6 +132,7 @@
             this.button4.TabIndex = 8;
             this.button4.Text = "Down";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -134,6 +143,7 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "Z-Back";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -144,12 +154,67 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Z-Forw";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // IncrementButton
+            // 
+            this.IncrementButton.BackColor = System.Drawing.Color.LightGreen;
+            this.IncrementButton.Location = new System.Drawing.Point(12, 53);
+            this.IncrementButton.Name = "IncrementButton";
+            this.IncrementButton.Size = new System.Drawing.Size(94, 29);
+            this.IncrementButton.TabIndex = 11;
+            this.IncrementButton.Text = "Increment";
+            this.IncrementButton.UseVisualStyleBackColor = false;
+            this.IncrementButton.Click += new System.EventHandler(this.IncrementButton_Click);
+            // 
+            // ContinuousButton
+            // 
+            this.ContinuousButton.BackColor = System.Drawing.Color.LightGray;
+            this.ContinuousButton.Location = new System.Drawing.Point(12, 88);
+            this.ContinuousButton.Name = "ContinuousButton";
+            this.ContinuousButton.Size = new System.Drawing.Size(94, 29);
+            this.ContinuousButton.TabIndex = 12;
+            this.ContinuousButton.Text = "continuous";
+            this.ContinuousButton.UseVisualStyleBackColor = false;
+            this.ContinuousButton.Click += new System.EventHandler(this.ContinuousButton_Click);
+            // 
+            // IncrementMovement
+            // 
+            this.IncrementMovement.Location = new System.Drawing.Point(112, 55);
+            this.IncrementMovement.Name = "IncrementMovement";
+            this.IncrementMovement.Size = new System.Drawing.Size(86, 27);
+            this.IncrementMovement.TabIndex = 13;
+            this.IncrementMovement.Text = "5";
+            // 
+            // mmlabel
+            // 
+            this.mmlabel.AutoSize = true;
+            this.mmlabel.Location = new System.Drawing.Point(204, 58);
+            this.mmlabel.Name = "mmlabel";
+            this.mmlabel.Size = new System.Drawing.Size(38, 20);
+            this.mmlabel.TabIndex = 14;
+            this.mmlabel.Text = "mm.";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(250, 11);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(94, 29);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "Refresh";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // CommandCenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 424);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.mmlabel);
+            this.Controls.Add(this.IncrementMovement);
+            this.Controls.Add(this.ContinuousButton);
+            this.Controls.Add(this.IncrementButton);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -182,5 +247,10 @@
         private Button button4;
         private Button button5;
         private Button button6;
+        private Button IncrementButton;
+        private Button ContinuousButton;
+        private TextBox IncrementMovement;
+        private Label mmlabel;
+        private Button button7;
     }
 }
