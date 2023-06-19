@@ -51,5 +51,17 @@ namespace GG3GrblProbe
             commandcenter.Show();
             this.Hide();
         }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AnyCrypt anycrypt = new AnyCrypt();
+            anycrypt.Show();
+            this.Hide();
+        }
     }
 }
