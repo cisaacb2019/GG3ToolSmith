@@ -44,6 +44,11 @@
             this.IncrementMovement = new System.Windows.Forms.TextBox();
             this.mmlabel = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.DISPLAYOUTPUTTEXT = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonDetect
@@ -205,11 +210,63 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(593, 394);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(94, 29);
+            this.button8.TabIndex = 16;
+            this.button8.Text = "ADV:";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // DISPLAYOUTPUTTEXT
+            // 
+            this.DISPLAYOUTPUTTEXT.Location = new System.Drawing.Point(862, 255);
+            this.DISPLAYOUTPUTTEXT.Name = "DISPLAYOUTPUTTEXT";
+            this.DISPLAYOUTPUTTEXT.Size = new System.Drawing.Size(592, 120);
+            this.DISPLAYOUTPUTTEXT.TabIndex = 17;
+            this.DISPLAYOUTPUTTEXT.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(789, 275);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "OUTPUT:";
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(862, 381);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(129, 29);
+            this.button9.TabIndex = 19;
+            this.button9.Text = "Reset Output:";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(1325, 381);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(129, 29);
+            this.button10.TabIndex = 20;
+            this.button10.Text = "Save:";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // CommandCenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 424);
+            this.ClientSize = new System.Drawing.Size(1482, 424);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.DISPLAYOUTPUTTEXT);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.mmlabel);
             this.Controls.Add(this.IncrementMovement);
@@ -252,5 +309,10 @@
         private TextBox IncrementMovement;
         private Label mmlabel;
         private Button button7;
+        private Button button8;
+        private RichTextBox DISPLAYOUTPUTTEXT;
+        private Label label3;
+        private Button button9;
+        private Button button10;
     }
 }
