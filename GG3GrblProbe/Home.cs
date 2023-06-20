@@ -63,5 +63,12 @@ namespace GG3GrblProbe
             anycrypt.Show();
             this.Hide();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Checkpoint checkpoint = new Checkpoint();
+            checkpoint.Show();
+            this.Hide();
+        }
     }
 }
