@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.xyLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,11 +102,21 @@
             this.textBox2.Text = "5";
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
+            // xyLabel
+            // 
+            this.xyLabel.AutoSize = true;
+            this.xyLabel.Location = new System.Drawing.Point(451, 340);
+            this.xyLabel.Name = "xyLabel";
+            this.xyLabel.Size = new System.Drawing.Size(59, 20);
+            this.xyLabel.TabIndex = 7;
+            this.xyLabel.Text = "xyLabel";
+            // 
             // UIProbeOverlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 450);
+            this.Controls.Add(this.xyLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
@@ -131,5 +142,6 @@
         private Label label3;
         private Label label4;
         private TextBox textBox2;
+        private Label xyLabel;
     }
 }

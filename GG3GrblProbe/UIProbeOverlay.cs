@@ -110,23 +110,41 @@ namespace GG3GrblProbe
             g.DrawRectangle(metalPen, barX, barY, barWidth, barHeight);
         }
 
-        private void pictureBox3_Paint(object sender, PaintEventArgs e)
-        {
-            PictureBox pictureBox = (PictureBox)sender;
-            Graphics g = e.Graphics;
-            Pen spindlePen = new Pen(Color.Red, 2); // Customize the pen color and width as desired
+private void pictureBox3_Paint(object sender, PaintEventArgs e)
+{
+    PictureBox pictureBox = (PictureBox)sender;
+    Graphics g = e.Graphics;
+    Pen spindlePen = new Pen(Color.Red, 2); // Customize the pen color and width as desired
 
-            // Calculate the position and size of the circle
-            int circleX = 0; // Set the X-coordinate of the circle
-            int circleY = 0; // Set the Y-coordinate of the circle
-            int circleWidth = pictureBox.Width - 1; // Set the width of the circle to match the picture box
-            int circleHeight = pictureBox.Height - 1; // Set the height of the circle to match the picture box
+    // Calculate the position and size of the circle
+    int circleWidth = pictureBox.Width - 1; // Set the width of the circle to match the picture box
+    int circleHeight = pictureBox.Height - 1; // Set the height of the circle to match the picture box
 
-            // Draw the circle
-            g.DrawEllipse(spindlePen, circleX, circleY, circleWidth, circleHeight);
+    // Calculate the position of the circle's center based on pictureBox1's graph
+    int centerX = pictureBox3.Left + circleWidth / 2;
+    int centerY = pictureBox3.Top + circleHeight / 2;
 
-            spindlePen.Dispose(); // Dispose the pen to release resources
-        }
+    // Convert the center coordinates to pictureBox1's coordinate system
+    int pictureBox1CenterX = centerX - pictureBox1.Left;
+    int pictureBox1CenterY = centerY - pictureBox1.Top;
+
+            double flipy = (pictureBox1CenterX / 3)- 218.5 ;
+            double flipx = (pictureBox1CenterY / 3);
+            if (flipx < 0)
+            {
+                flipx = flipx * -1;
+            }
+            flipx = -88 + flipx;
+    // Display the center coordinates as text using the xyLabel
+    xyLabel.Text = $"Center: ({flipy}, {flipx})";
+
+    // Draw the circle
+    g.DrawEllipse(spindlePen, 0, 0, circleWidth, circleHeight);
+
+    spindlePen.Dispose(); // Dispose the pen to release resources
+}
+
+
 
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -182,8 +200,24 @@ namespace GG3GrblProbe
                 newY = Math.Max(0, Math.Min(newY, maxY));
 
                 pictureBox.Location = new Point(newX, newY);
+
+                // Calculate the center coordinates based on the new position
+                int circleWidth = pictureBox.Width - 1;
+                int circleHeight = pictureBox.Height - 1;
+                int centerX = newX + circleWidth / 2;
+                int centerY = newY + circleHeight / 2;
+
+                // Calculate the adjusted Y-coordinate by subtracting the desired val
+                // Display the center coordinates with adjusted Y as text using the xyLabel
+                
+                // Refresh pictureBox3 to trigger the pictureBox3_Paint event and update the display
+                pictureBox.Refresh();
             }
         }
+
+
+
+
 
         private void pictureBox3_MouseUp(object sender, MouseEventArgs e)
         {
