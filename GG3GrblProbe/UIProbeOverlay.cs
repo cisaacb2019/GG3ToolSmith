@@ -222,9 +222,15 @@ namespace GG3GrblProbe
                     const double maxDiameter = 80;
                     diameter = Math.Max(minDiameter, Math.Min(diameter, maxDiameter));
 
-                    // Calculate the width and height based on the diameter
-                    int width = (int)diameter  * 3;
-                    int height = (int)diameter * 3;
+                    // If diameter is less than 4, treat it as 4
+                    if (diameter < 4)
+                    {
+                        diameter = 4;
+                    }
+
+                    // Calculate the width and height based on the diameter multiplied by 3
+                    int width = (int)(diameter * 3);
+                    int height = (int)(diameter * 3);
 
                     // Set the size of pictureBox3 using the calculated width and height
                     pictureBox3.Width = width;
@@ -237,6 +243,7 @@ namespace GG3GrblProbe
                 }
             }
         }
+
 
     }
 }
