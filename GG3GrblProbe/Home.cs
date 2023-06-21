@@ -70,5 +70,12 @@ namespace GG3GrblProbe
             checkpoint.Show();
             this.Hide();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            UIProbeOverlay probeOverlay = new UIProbeOverlay();
+            probeOverlay.Show();
+            this.Hide();
+        }
     }
 }

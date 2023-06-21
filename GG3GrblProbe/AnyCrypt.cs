@@ -9,7 +9,7 @@ namespace GG3GrblProbe
     {
         private string filePath;
         private bool isEncryptionMode;
-        private byte[] defaultSalt = Encoding.UTF8.GetBytes("DEFAULT SALT");
+        private byte[] defaultSalt = Encoding.UTF8.GetBytes("4e9l$#Fg1m^L*2oG$Zv!Eg8cT0xY@D7Pn6WqIhQfJzApH#d4BcO9yS5RvG1tK3uX2aM7iN6eF5dZ0wC8bP4jT1lV9sU3mQ1oI5kV7cY3nB4vR8bS6tH9w");
 
         public AnyCrypt()
         {

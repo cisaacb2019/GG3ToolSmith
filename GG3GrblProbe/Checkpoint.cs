@@ -75,18 +75,18 @@ namespace GG3GrblProbe
                 Directory.CreateDirectory(toolsmithFolderPath);
             }
 
-            using (var openFileDialog = new OpenFileDialog())
+            using (var folderBrowserDialog = new FolderBrowserDialog())
             {
-                openFileDialog.ValidateNames = false;
-                openFileDialog.CheckFileExists = false;
-                openFileDialog.CheckPathExists = true;
+                folderBrowserDialog.SelectedPath = toolsmithFolderPath;
 
-                // Set the custom folder browser style
-                openFileDialog.CustomPlaces.Add(new FileDialogCustomPlace(toolsmithFolderPath));
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                DialogResult result = folderBrowserDialog.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
                 {
-                    return Path.GetDirectoryName(openFileDialog.FileName);
+                    return folderBrowserDialog.SelectedPath;
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return toolsmithFolderPath;
                 }
             }
 
@@ -168,7 +168,7 @@ namespace GG3GrblProbe
                     using (StreamReader reader = File.OpenText(filePath))
                     {
                         string content = reader.ReadToEnd();
-                        MessageBox.Show("Content of the file:\n" + content);
+                        MessageBox.Show("Start from step:\n" + content);
                         return content;
                     }
                 }
