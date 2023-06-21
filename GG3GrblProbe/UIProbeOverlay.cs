@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GG3GrblProbe
@@ -7,7 +8,9 @@ namespace GG3GrblProbe
     {
         private bool isDragging;
         private Point offset;
-        private int gridSpacing;
+        private int gridSpacingWidth;
+        private int gridSpacingHeight;
+        public int MULTIPLIER = 5;
 
         public UIProbeOverlay()
         {
@@ -23,16 +26,18 @@ namespace GG3GrblProbe
             Pen outlinePen = new Pen(Color.Black, 3); // Use a thicker pen for the outline
 
             // Calculate the grid spacing based on the size of the picture box and the number of divisions
-            int divisions = 26;
-            gridSpacing = pictureBox.Width / divisions;
+            int divisionsWidth = 241 / MULTIPLIER;
+            int divisionsHeight = 85 / MULTIPLIER;
+            gridSpacingWidth = pictureBox.Width / divisionsWidth;
+            gridSpacingHeight = pictureBox.Height / divisionsHeight;
 
             // Draw the grid lines
-            for (int x = 0; x <= pictureBox.Width; x += gridSpacing)
+            for (int x = 0; x <= pictureBox.Width; x += gridSpacingWidth)
             {
-              //  g.DrawLine(gridPen, x, 0, x, pictureBox.Height);
+               // g.DrawLine(gridPen, x, 0, x, pictureBox.Height);
             }
 
-            for (int y = 0; y <= pictureBox.Height; y += gridSpacing)
+            for (int y = 0; y <= pictureBox.Height; y += gridSpacingHeight)
             {
               //  g.DrawLine(gridPen, 0, y, pictureBox.Width, y);
             }
@@ -44,7 +49,6 @@ namespace GG3GrblProbe
             gridPen.Dispose();
             outlinePen.Dispose();
         }
-
 
         private void UIProbeOverlay_Load(object sender, EventArgs e)
         {
@@ -67,8 +71,6 @@ namespace GG3GrblProbe
             pictureBox2.MouseMove += pictureBox2_MouseMove;
             pictureBox2.MouseUp += pictureBox2_MouseUp;
         }
-
-
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
@@ -99,8 +101,8 @@ namespace GG3GrblProbe
                 PictureBox pictureBox = (PictureBox)sender;
 
                 // Calculate the new position of pictureBox2 aligned to the grid
-                int newX = (e.X + pictureBox.Left - offset.X) / gridSpacing * gridSpacing;
-                int newY = (e.Y + pictureBox.Top - offset.Y) / gridSpacing * gridSpacing;
+                int newX = (e.X + pictureBox.Left - offset.X) / gridSpacingWidth * gridSpacingWidth;
+                int newY = (e.Y + pictureBox.Top - offset.Y) / gridSpacingHeight * gridSpacingHeight;
 
                 // Ensure the new position stays within the boundaries of pictureBox1
                 int maxX = pictureBox1.Width - pictureBox.Width;
@@ -121,5 +123,23 @@ namespace GG3GrblProbe
         {
             // Handle the click event for pictureBox1
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                if (int.TryParse(textBox1.Text, out int multiplier))
+                {
+                    MULTIPLIER = Math.Min(multiplier, 80); // Limit the value to 80 if it exceeds
+                }
+                else
+                {
+                    // Display an error message or perform appropriate error handling
+                    MessageBox.Show("Invalid input. Please enter a valid integer.");
+                }
+            }
+        }
+
+
     }
 }
