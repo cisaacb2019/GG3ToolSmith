@@ -33,6 +33,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,15 +79,35 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(87, 324);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 20);
+            this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Spindle X:";
+            this.label3.Text = "Tool Diameter:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(331, 324);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 20);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "mm.";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(200, 321);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(125, 27);
+            this.textBox2.TabIndex = 5;
+            this.textBox2.Text = "5";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // UIProbeOverlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
@@ -107,5 +129,7 @@
         private TextBox textBox1;
         private Label label2;
         private Label label3;
+        private Label label4;
+        private TextBox textBox2;
     }
 }
