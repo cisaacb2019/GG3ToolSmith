@@ -130,13 +130,18 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
 
             double flipy = (pictureBox1CenterX / 3)- 218.5 ;
             double flipx = (pictureBox1CenterY / 3);
+            double adjustedx = -35;
             if (flipx < 0)
             {
                 flipx = flipx * -1;
+                adjustedx = -flipx + -3.5;
             }
-            flipx = -88 + flipx;
+            else
+            {
+                adjustedx = flipx * -1;
+            }
     // Display the center coordinates as text using the xyLabel
-    xyLabel.Text = $"Center: ({flipy}, {flipx})";
+    xyLabel.Text = $"Center: ({flipy}, {adjustedx})";
 
     // Draw the circle
     g.DrawEllipse(spindlePen, 0, 0, circleWidth, circleHeight);
