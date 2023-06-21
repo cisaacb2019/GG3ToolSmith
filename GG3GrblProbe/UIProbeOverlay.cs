@@ -45,15 +45,12 @@ namespace GG3GrblProbe
             PictureBox pictureBox2 = new PictureBox();
 
             // Configure the picture box
-            pictureBox2.Location = new Point(50, 50);           // Set the position of the picture box
-            pictureBox2.Size = new Size(200, 100);              // Set the size of the picture box
+            pictureBox2.Location = new Point(pictureBox1.Left + 50, pictureBox1.Top + 50); // Set the position of the picture box relative to pictureBox1
+            pictureBox2.Size = new Size(400, 100);              // Set the size of the picture box
             pictureBox2.BackColor = Color.White;                // Set the background color of the picture box
 
             // Add the picture box to the form's controls
-            Controls.Add(pictureBox2);
-
-            // Bring pictureBox2 to the front
-            pictureBox2.BringToFront();
+            pictureBox1.Controls.Add(pictureBox2); // Add pictureBox2 as a child control of pictureBox1
 
             // Subscribe to the Paint event of pictureBox2
             pictureBox2.Paint += pictureBox2_Paint;
@@ -63,6 +60,8 @@ namespace GG3GrblProbe
             pictureBox2.MouseMove += pictureBox2_MouseMove;
             pictureBox2.MouseUp += pictureBox2_MouseUp;
         }
+
+
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
@@ -95,6 +94,12 @@ namespace GG3GrblProbe
                 // Calculate the new position of pictureBox2 aligned to the grid
                 int newX = (e.X + pictureBox.Left - offset.X) / gridSpacing * gridSpacing;
                 int newY = (e.Y + pictureBox.Top - offset.Y) / gridSpacing * gridSpacing;
+
+                // Ensure the new position stays within the boundaries of pictureBox1
+                int maxX = pictureBox1.Width - pictureBox.Width;
+                int maxY = pictureBox1.Height - pictureBox.Height;
+                newX = Math.Max(0, Math.Min(newX, maxX));
+                newY = Math.Max(0, Math.Min(newY, maxY));
 
                 pictureBox.Location = new Point(newX, newY);
             }
