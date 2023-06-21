@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace GG3GrblProbe
@@ -21,23 +20,31 @@ namespace GG3GrblProbe
             PictureBox pictureBox = (PictureBox)sender;
             Graphics g = e.Graphics;
             Pen gridPen = new Pen(Color.LightGray, 1);
+            Pen outlinePen = new Pen(Color.Black, 3); // Use a thicker pen for the outline
 
             // Calculate the grid spacing based on the size of the picture box and the number of divisions
-            int divisions = 10;
+            int divisions = 26;
             gridSpacing = pictureBox.Width / divisions;
 
-            // Draw vertical lines
+            // Draw the grid lines
             for (int x = 0; x <= pictureBox.Width; x += gridSpacing)
             {
-                g.DrawLine(gridPen, x, 0, x, pictureBox.Height);
+              //  g.DrawLine(gridPen, x, 0, x, pictureBox.Height);
             }
 
-            // Draw horizontal lines
             for (int y = 0; y <= pictureBox.Height; y += gridSpacing)
             {
-                g.DrawLine(gridPen, 0, y, pictureBox.Width, y);
+              //  g.DrawLine(gridPen, 0, y, pictureBox.Width, y);
             }
+
+            // Draw the outline of the PictureBox rectangle
+            g.DrawRectangle(outlinePen, 0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
+
+            // Dispose the pens to release resources
+            gridPen.Dispose();
+            outlinePen.Dispose();
         }
+
 
         private void UIProbeOverlay_Load(object sender, EventArgs e)
         {
