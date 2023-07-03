@@ -36,6 +36,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.xyLabel = new System.Windows.Forms.Label();
+            this.showGridCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,17 +106,29 @@
             // xyLabel
             // 
             this.xyLabel.AutoSize = true;
-            this.xyLabel.Location = new System.Drawing.Point(451, 340);
+            this.xyLabel.Location = new System.Drawing.Point(403, 285);
             this.xyLabel.Name = "xyLabel";
             this.xyLabel.Size = new System.Drawing.Size(59, 20);
             this.xyLabel.TabIndex = 7;
             this.xyLabel.Text = "xyLabel";
             // 
+            // showGridCheckBox
+            // 
+            this.showGridCheckBox.AutoSize = true;
+            this.showGridCheckBox.Location = new System.Drawing.Point(403, 324);
+            this.showGridCheckBox.Name = "showGridCheckBox";
+            this.showGridCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.showGridCheckBox.TabIndex = 8;
+            this.showGridCheckBox.Text = "EnableGrid";
+            this.showGridCheckBox.UseVisualStyleBackColor = true;
+            this.showGridCheckBox.CheckedChanged += new System.EventHandler(this.showGridCheckBox_CheckedChanged);
+            // 
             // UIProbeOverlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 450);
+            this.ClientSize = new System.Drawing.Size(850, 677);
+            this.Controls.Add(this.showGridCheckBox);
             this.Controls.Add(this.xyLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
@@ -143,5 +156,6 @@
         private Label label4;
         private TextBox textBox2;
         private Label xyLabel;
+        private CheckBox showGridCheckBox;
     }
 }

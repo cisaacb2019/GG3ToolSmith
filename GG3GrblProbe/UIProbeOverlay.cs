@@ -18,10 +18,11 @@ namespace GG3GrblProbe
         public UIProbeOverlay()
         {
             InitializeComponent();
-            pictureBox1.Paint += pictureBox1_Paint;
+            pictureBox1.Paint += pictureBox1_PaintNoGrid;
         }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+
+        private void pictureBox1_PaintGrid(object sender, PaintEventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
             Graphics g = e.Graphics;
@@ -51,6 +52,29 @@ namespace GG3GrblProbe
             // Dispose the pens to release resources
             gridPen.Dispose();
             outlinePen.Dispose();
+
+        }
+        private void pictureBox1_PaintNoGrid(object sender, PaintEventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            Graphics g = e.Graphics;
+            Pen gridPen = new Pen(Color.LightGray, 1);
+            Pen outlinePen = new Pen(Color.Black, 3); // Use a thicker pen for the outline
+
+            // Calculate the grid spacing based on the size of the picture box and the number of divisions
+            int divisionsWidth = 241 / MULTIPLIER;
+            int divisionsHeight = 85 / MULTIPLIER;
+            gridSpacingWidth = pictureBox.Width / divisionsWidth;
+            gridSpacingHeight = pictureBox.Height / divisionsHeight;
+
+
+            // Draw the outline of the PictureBox rectangle
+            g.DrawRectangle(outlinePen, 0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
+
+            // Dispose the pens to release resources
+            gridPen.Dispose();
+            outlinePen.Dispose();
+
         }
 
         private void UIProbeOverlay_Load(object sender, EventArgs e)
@@ -59,7 +83,7 @@ namespace GG3GrblProbe
             PictureBox pictureBox2 = new PictureBox();
 
             // Configure the picture box
-            pictureBox2.Location = new Point(pictureBox1.Left + 50, pictureBox1.Top + 50); // Set the position of the picture box relative to pictureBox1
+            pictureBox2.Location = new Point(pictureBox1.Left - 60, pictureBox1.Top + 140); // Set the position of the picture box relative to pictureBox1
             pictureBox2.Size = new Size(400, 100);              // Set the size of the picture box
             pictureBox2.BackColor = Color.White;                // Set the background color of the picture box
 
@@ -78,8 +102,8 @@ namespace GG3GrblProbe
             pictureBox3 = new PictureBox();
 
             // Configure the picture box for the spindle
-            pictureBox3.Location = new Point(pictureBox1.Left + 100, pictureBox1.Top + 100); // Adjust the position as desired
-            pictureBox3.Size = new Size(200, 200); // Adjust the size as desired
+            pictureBox3.Location = new Point(pictureBox1.Left + 637, pictureBox1.Top -10); // Adjust the position as desired
+            pictureBox3.Size = new Size(15, 15); // Adjust the size as desired
             pictureBox3.BackColor = Color.Transparent; // Set the background color to transparent or any desired color
 
             // Add the picture box to the form's controls
@@ -93,7 +117,6 @@ namespace GG3GrblProbe
             pictureBox3.MouseMove += pictureBox3_MouseMove;
             pictureBox3.MouseUp += pictureBox3_MouseUp;
         }
-
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
@@ -241,6 +264,7 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
                 if (int.TryParse(textBox1.Text, out int multiplier))
                 {
                     MULTIPLIER = Math.Min(multiplier, 80); // Limit the value to 80 if it exceeds
+                    pictureBox1.Refresh(); // Redraw the grid immediately
                 }
                 else
                 {
@@ -249,6 +273,7 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
                 }
             }
         }
+
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -274,6 +299,9 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
                     // Set the size of pictureBox3 using the calculated width and height
                     pictureBox3.Width = width;
                     pictureBox3.Height = height;
+
+                    // Trigger the pictureBox3_Resize event handler directly
+                    pictureBox3_Resize(pictureBox3, EventArgs.Empty);
                 }
                 else
                 {
@@ -283,6 +311,28 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
             }
         }
 
+        private void pictureBox3_Resize(object sender, EventArgs e)
+        {
+            // Manually trigger the pictureBox3_Paint event to repaint the control
+            pictureBox3.Refresh();
+        }
+
+        private void showGridCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (showGridCheckBox.Checked)
+            {
+                pictureBox1.Paint -= pictureBox1_PaintNoGrid;  // Remove the no-grid paint event handler
+                pictureBox1.Paint += pictureBox1_PaintGrid;    // Add the grid paint event handler
+                pictureBox1.Refresh();
+            }
+            else
+            {
+                pictureBox1.Paint -= pictureBox1_PaintGrid;     // Remove the grid paint event handler
+                pictureBox1.Paint += pictureBox1_PaintNoGrid;   // Add the no-grid paint event handler
+                pictureBox1.Refresh();
+            }
+        }
 
     }
+
 }
