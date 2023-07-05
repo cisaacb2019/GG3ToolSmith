@@ -12,8 +12,13 @@ namespace GG3GrblProbe
         private int gridSpacingHeight;
         public int MULTIPLIER = 5;
         public double DIAMETER = 5;
-
         private PictureBox pictureBox3;
+
+        public double SpindleLocationX;
+        public double SpindleLocationY;
+        public double ProbeLocationX;
+        public double ProbeLocationY;
+
 
         public UIProbeOverlay()
         {
@@ -165,7 +170,8 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
             }
     // Display the center coordinates as text using the xyLabel
     xyLabel.Text = $"Center: ({flipy}, {adjustedx})";
-
+            SpindleLocationX = adjustedx;
+            SpindleLocationY = flipy;
     // Draw the circle
     g.DrawEllipse(spindlePen, 0, 0, circleWidth, circleHeight);
 
@@ -336,10 +342,12 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
         private void StartProbe_Click(object sender, EventArgs e)
         {
             // Create a new picture box for the probe circle
-            PictureBox probePictureBox = new PictureBox();
-
+            PictureBox probePictureBox = ProbePictureBox;
+            probePictureBox.Visible = true;
+            probePictureBox.Name = "probePictureBox";
             // Configure the picture box for the probe circle
-            probePictureBox.Location = pictureBox3.Location;
+            probePictureBox.Location = new Point(pictureBox3.Left - 10, pictureBox3.Top);
+
             probePictureBox.Size = pictureBox3.Size;
             probePictureBox.BackColor = Color.Green;
 
@@ -350,7 +358,6 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
 
             // Add the probe picture box to the form's controls
             pictureBox1.Controls.Add(probePictureBox);
-
             // Refresh the picture box to display the new probe circle
             pictureBox1.Refresh();
         }
@@ -400,6 +407,25 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
             Home.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Get the coordinates of the green box
+
+            int greenBoxX = ProbePictureBox.Location.X;
+            int greenBoxY = ProbePictureBox.Location.Y;
+
+            // Get the coordinates of the red circle
+            int redCircleX = pictureBox3.Location.X;
+            int redCircleY = pictureBox3.Location.Y;
+
+            ProbeLocationX = greenBoxX - 710.5;
+
+            // Display the coordinates
+            MessageBox.Show($"Green Box Coordinates: (x{ProbeLocationX}, {greenBoxY})\n" +
+                            $"Red Circle Coordinates: (x{SpindleLocationX},y {SpindleLocationY})");
+        }
+
     }
 
 }

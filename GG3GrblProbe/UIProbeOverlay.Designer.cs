@@ -39,7 +39,10 @@
             this.showGridCheckBox = new System.Windows.Forms.CheckBox();
             this.StartProbe = new System.Windows.Forms.Button();
             this.Home = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ProbePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProbePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -145,11 +148,32 @@
             this.Home.UseVisualStyleBackColor = true;
             this.Home.Click += new System.EventHandler(this.Home_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(191, 402);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 41;
+            this.button1.Text = "n";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ProbePictureBox
+            // 
+            this.ProbePictureBox.Location = new System.Drawing.Point(738, 261);
+            this.ProbePictureBox.Name = "ProbePictureBox";
+            this.ProbePictureBox.Size = new System.Drawing.Size(51, 43);
+            this.ProbePictureBox.TabIndex = 42;
+            this.ProbePictureBox.TabStop = false;
+            this.ProbePictureBox.Visible = false;
+            // 
             // UIProbeOverlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 677);
+            this.Controls.Add(this.ProbePictureBox);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.StartProbe);
             this.Controls.Add(this.showGridCheckBox);
@@ -165,6 +189,7 @@
             this.Text = "UIProbeOverlay";
             this.Load += new System.EventHandler(this.UIProbeOverlay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProbePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +208,7 @@
         private CheckBox showGridCheckBox;
         private Button StartProbe;
         private Button Home;
+        private Button button1;
+        private PictureBox ProbePictureBox;
     }
 }
