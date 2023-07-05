@@ -130,7 +130,7 @@
             // 
             // StartProbe
             // 
-            this.StartProbe.Location = new System.Drawing.Point(91, 402);
+            this.StartProbe.Location = new System.Drawing.Point(104, 389);
             this.StartProbe.Name = "StartProbe";
             this.StartProbe.Size = new System.Drawing.Size(94, 29);
             this.StartProbe.TabIndex = 9;
@@ -150,11 +150,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(191, 402);
+            this.button1.Location = new System.Drawing.Point(204, 389);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 41;
-            this.button1.Text = "n";
+            this.button1.Text = "Save Probe";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

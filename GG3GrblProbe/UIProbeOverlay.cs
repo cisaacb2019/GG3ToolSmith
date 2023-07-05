@@ -159,14 +159,14 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
             double flipy = (pictureBox1CenterX / 3)- 218.5 ;
             double flipx = (pictureBox1CenterY / 3);
             double adjustedx = -35;
-            if (flipx < 0)
+            if (flipx < -5)
             {
                 flipx = flipx * -1;
-                adjustedx = -flipx + -3.5;
+                adjustedx = -0.5;
             }
             else
             {
-                adjustedx = flipx * -1;
+                adjustedx = (flipx * -1) - 10;
             }
     // Display the center coordinates as text using the xyLabel
     xyLabel.Text = $"Center: ({flipy}, {adjustedx})";
@@ -412,18 +412,34 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
         {
             // Get the coordinates of the green box
 
-            int greenBoxX = ProbePictureBox.Location.X;
-            int greenBoxY = ProbePictureBox.Location.Y;
+            double greenBoxX = ProbePictureBox.Location.X;
+            double greenBoxY = ProbePictureBox.Location.Y;
 
             // Get the coordinates of the red circle
             int redCircleX = pictureBox3.Location.X;
             int redCircleY = pictureBox3.Location.Y;
 
-            ProbeLocationX = greenBoxX - 710.5;
+            double greenboxcalcy =( greenBoxX / 3 ) - 238.5;
+
+            double greenboxcalcx = ((greenBoxY / 3) * -1 ) + 4;
+            double greenboxadjustedx = 0;
+            if (greenBoxY < 45)
+            {
+                greenboxadjustedx = greenboxcalcx - 1;
+            }
+            if (greenboxcalcx > -0.5)
+            {
+                greenboxadjustedx = -0.5;
+            }
+            else if (greenBoxY > 45)
+            {
+                greenboxadjustedx = greenboxcalcx;
+            }
 
             // Display the coordinates
-            MessageBox.Show($"Green Box Coordinates: (x{ProbeLocationX}, {greenBoxY})\n" +
-                            $"Red Circle Coordinates: (x{SpindleLocationX},y {SpindleLocationY})");
+            MessageBox.Show($"Green Box Coordinates: (x{greenboxadjustedx}, y{greenboxcalcy})\n" +
+                            $"Red Circle Coordinates: (x{SpindleLocationX},y {SpindleLocationY})" +
+                            $"Testing {greenBoxY}");
         }
 
     }
