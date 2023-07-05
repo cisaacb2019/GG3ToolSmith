@@ -37,12 +37,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.xyLabel = new System.Windows.Forms.Label();
             this.showGridCheckBox = new System.Windows.Forms.CheckBox();
+            this.StartProbe = new System.Windows.Forms.Button();
+            this.Home = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(62, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(66, 47);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(723, 257);
             this.pictureBox1.TabIndex = 0;
@@ -52,7 +54,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 285);
+            this.label1.Location = new System.Drawing.Point(91, 320);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 20);
             this.label1.TabIndex = 1;
@@ -60,7 +62,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(208, 282);
+            this.textBox1.Location = new System.Drawing.Point(212, 317);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(125, 27);
             this.textBox1.TabIndex = 2;
@@ -70,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(339, 285);
+            this.label2.Location = new System.Drawing.Point(343, 320);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 20);
             this.label2.TabIndex = 3;
@@ -79,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(87, 324);
+            this.label3.Location = new System.Drawing.Point(91, 359);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 4;
@@ -88,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(331, 324);
+            this.label4.Location = new System.Drawing.Point(335, 359);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 20);
             this.label4.TabIndex = 6;
@@ -96,7 +98,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(200, 321);
+            this.textBox2.Location = new System.Drawing.Point(204, 356);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(125, 27);
             this.textBox2.TabIndex = 5;
@@ -106,7 +108,7 @@
             // xyLabel
             // 
             this.xyLabel.AutoSize = true;
-            this.xyLabel.Location = new System.Drawing.Point(403, 285);
+            this.xyLabel.Location = new System.Drawing.Point(407, 320);
             this.xyLabel.Name = "xyLabel";
             this.xyLabel.Size = new System.Drawing.Size(59, 20);
             this.xyLabel.TabIndex = 7;
@@ -115,7 +117,7 @@
             // showGridCheckBox
             // 
             this.showGridCheckBox.AutoSize = true;
-            this.showGridCheckBox.Location = new System.Drawing.Point(403, 324);
+            this.showGridCheckBox.Location = new System.Drawing.Point(407, 359);
             this.showGridCheckBox.Name = "showGridCheckBox";
             this.showGridCheckBox.Size = new System.Drawing.Size(104, 24);
             this.showGridCheckBox.TabIndex = 8;
@@ -123,11 +125,33 @@
             this.showGridCheckBox.UseVisualStyleBackColor = true;
             this.showGridCheckBox.CheckedChanged += new System.EventHandler(this.showGridCheckBox_CheckedChanged);
             // 
+            // StartProbe
+            // 
+            this.StartProbe.Location = new System.Drawing.Point(91, 402);
+            this.StartProbe.Name = "StartProbe";
+            this.StartProbe.Size = new System.Drawing.Size(94, 29);
+            this.StartProbe.TabIndex = 9;
+            this.StartProbe.Text = "Start Probe";
+            this.StartProbe.UseVisualStyleBackColor = true;
+            this.StartProbe.Click += new System.EventHandler(this.StartProbe_Click);
+            // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(12, 12);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(103, 29);
+            this.Home.TabIndex = 40;
+            this.Home.Text = "Go Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
+            // 
             // UIProbeOverlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 677);
+            this.Controls.Add(this.Home);
+            this.Controls.Add(this.StartProbe);
             this.Controls.Add(this.showGridCheckBox);
             this.Controls.Add(this.xyLabel);
             this.Controls.Add(this.label4);
@@ -157,5 +181,7 @@
         private TextBox textBox2;
         private Label xyLabel;
         private CheckBox showGridCheckBox;
+        private Button StartProbe;
+        private Button Home;
     }
 }

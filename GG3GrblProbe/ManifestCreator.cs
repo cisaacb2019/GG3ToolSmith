@@ -210,22 +210,24 @@ namespace GG3GrblProbe
 
             if (File.Exists(targetFilePath))
             {
-                MessageBox.Show("A G-code file with the same name already exists in the 'Code' folder. Please choose a different file or rename the existing one.");
-                return;
-            }
-
-            try
-            {
-                Directory.CreateDirectory(codeFolderPath);
                 File.Move(sourceFilePath, targetFilePath);
                 MessageBox.Show("G-code file moved successfully!");
                 OutputCode.Text += $"\r\n      step_gcode: Code/{selectedGcodeFileName}\r\n";
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("An error occurred while moving the G-code file: " + ex.Message);
+                try
+                {
+                    Directory.CreateDirectory(codeFolderPath);
+                    File.Move(sourceFilePath, targetFilePath);
+                    MessageBox.Show("G-code file moved successfully!");
+                    OutputCode.Text += $"\r\n      step_gcode: Code/{selectedGcodeFileName}\r\n";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while moving the G-code file: " + ex.Message);
+                }
             }
-
             selectedgcode = null; // Reset the selected G-code file path
         }
 
@@ -278,7 +280,7 @@ namespace GG3GrblProbe
 
         private void TimeoutWrite_Click(object sender, EventArgs e)
         {
-            OutputCode.Text += $"timeout:{timeoutwriter}";
+            OutputCode.Text += $"\r\ntimeout:{timeoutwriter.Text}";
         }
 
         private void ImageWriter_Click(object sender, EventArgs e)
@@ -296,22 +298,26 @@ namespace GG3GrblProbe
 
             if (File.Exists(destinationPath))
             {
-                MessageBox.Show("An image with the same name already exists in the 'Images' folder. Please choose a different image or rename the existing one.");
-                return;
-            }
-
-            try
-            {
                 Directory.CreateDirectory(imageFolderPath);
                 File.Move(selectedimage, destinationPath);
-                MessageBox.Show("Image moved successfully!");
                 OutputCode.Text += $"\r\n      step_image: Images/{selectedImageName}";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while moving the image: " + ex.Message);
-            }
+                // MessageBox.Show("An image with the same name already exists in the 'Images' folder. Please choose a different image or rename the existing one.");
 
+            }
+            else
+            {
+                try
+                {
+                    Directory.CreateDirectory(imageFolderPath);
+                    File.Move(selectedimage, destinationPath);
+                    MessageBox.Show("Image moved successfully!");
+                    OutputCode.Text += $"\r\n      step_image: Images/{selectedImageName}";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while moving the image: " + ex.Message);
+                }
+            }
             selectedimage = null; // Reset the selected image path
 
         }
@@ -347,6 +353,18 @@ namespace GG3GrblProbe
         private void ManifestCreator_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void FolderNameText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            Home Home = new Home();
+            Home.Show();
+            this.Hide();
         }
     }
 }

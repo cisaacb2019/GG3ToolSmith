@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.TextName = new System.Windows.Forms.TextBox();
+            this.Home = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,11 +65,22 @@
             this.TextName.Text = "EnterName";
             this.TextName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(12, 3);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(88, 29);
+            this.Home.TabIndex = 40;
+            this.Home.Text = "Go Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
+            // 
             // ddcompress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 421);
+            this.Controls.Add(this.Home);
             this.Controls.Add(this.TextName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -84,5 +96,6 @@
         private Label label1;
         private Button button1;
         private TextBox TextName;
+        private Button Home;
     }
 }

@@ -104,6 +104,7 @@
             this.Delete = new System.Windows.Forms.Button();
             this.YesDelete = new System.Windows.Forms.Button();
             this.NoSaveMe = new System.Windows.Forms.Button();
+            this.Home = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CodeOutput
@@ -893,11 +894,22 @@
             this.NoSaveMe.Visible = false;
             this.NoSaveMe.Click += new System.EventHandler(this.NoSaveMe_Click);
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(960, 7);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(88, 29);
+            this.Home.TabIndex = 95;
+            this.Home.Text = "Go Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
+            // 
             // SpeedCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 703);
+            this.Controls.Add(this.Home);
             this.Controls.Add(this.NoSaveMe);
             this.Controls.Add(this.YesDelete);
             this.Controls.Add(this.Delete);
@@ -1058,5 +1070,6 @@
         private Button Delete;
         private Button YesDelete;
         private Button NoSaveMe;
+        private Button Home;
     }
 }

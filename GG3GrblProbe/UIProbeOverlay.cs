@@ -333,6 +333,17 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
             }
         }
 
+        private void StartProbe_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            Home Home = new Home();
+            Home.Show();
+            this.Hide();
+        }
     }
 
 }

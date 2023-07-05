@@ -49,6 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.Home = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonDetect
@@ -257,11 +258,22 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(1382, 6);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(88, 29);
+            this.Home.TabIndex = 40;
+            this.Home.Text = "Go Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
+            // 
             // CommandCenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 424);
+            this.Controls.Add(this.Home);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.label3);
@@ -314,5 +326,6 @@
         private Label label3;
         private Button button9;
         private Button button10;
+        private Button Home;
     }
 }

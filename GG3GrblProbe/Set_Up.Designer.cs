@@ -87,6 +87,7 @@
             this.DefaultInput = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
             this.ToolPercentageInput = new System.Windows.Forms.TextBox();
+            this.Home = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -645,11 +646,23 @@
             this.ToolPercentageInput.TabIndex = 59;
             this.ToolPercentageInput.TextChanged += new System.EventHandler(this.ToolPercentageInput_TextChanged);
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(277, -4);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(88, 29);
+            this.Home.TabIndex = 61;
+            this.Home.Text = "Go Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
+            // 
             // Set_Up
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 863);
+            this.ControlBox = false;
+            this.Controls.Add(this.Home);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.ToolPercentageInput);
             this.Controls.Add(this.DefaultInput);
@@ -777,5 +790,6 @@
         private Button DefaultInput;
         private Label label33;
         private TextBox ToolPercentageInput;
+        private Button Home;
     }
 }

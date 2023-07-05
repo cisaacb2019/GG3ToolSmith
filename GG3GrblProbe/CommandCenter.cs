@@ -372,5 +372,12 @@ namespace GG3GrblProbe
 
             return fileName;
         }
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            Home Home = new Home();
+            Home.Show();
+            this.Hide();
+        }
     }
 }

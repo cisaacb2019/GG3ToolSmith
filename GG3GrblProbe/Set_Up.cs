@@ -304,5 +304,12 @@ namespace GG3GrblProbe
         {
             DefaultInput.BackColor = Color.White;
         }
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            Home Home = new Home();
+            Home.Show();
+            this.Hide();
+        }
     }
 }

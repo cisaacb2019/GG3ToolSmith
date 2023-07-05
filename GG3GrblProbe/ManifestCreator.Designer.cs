@@ -51,6 +51,7 @@
             this.SelectImage = new System.Windows.Forms.Button();
             this.ImageWriter = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.Home = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // JobNameInput
@@ -60,7 +61,7 @@
             this.JobNameInput.Name = "JobNameInput";
             this.JobNameInput.Size = new System.Drawing.Size(776, 27);
             this.JobNameInput.TabIndex = 0;
-            this.JobNameInput.Text = "Enter Job Name:";
+            this.JobNameInput.Text = "Enter Job Name/Checkpoint Number:";
             this.JobNameInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.JobNameInput.Visible = false;
             // 
@@ -82,7 +83,7 @@
             this.jobTextInput.Name = "jobTextInput";
             this.jobTextInput.Size = new System.Drawing.Size(776, 27);
             this.jobTextInput.TabIndex = 2;
-            this.jobTextInput.Text = "Enter Job Text:";
+            this.jobTextInput.Text = "Enter Job Text/ Checkpoint Text:";
             this.jobTextInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.jobTextInput.Visible = false;
             // 
@@ -142,7 +143,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(12, 160);
+            this.button5.Location = new System.Drawing.Point(12, 158);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(776, 85);
             this.button5.TabIndex = 8;
@@ -153,17 +154,18 @@
             // FolderNameText
             // 
             this.FolderNameText.BackColor = System.Drawing.Color.Aquamarine;
-            this.FolderNameText.Location = new System.Drawing.Point(12, 127);
+            this.FolderNameText.Location = new System.Drawing.Point(12, 125);
             this.FolderNameText.Name = "FolderNameText";
             this.FolderNameText.Size = new System.Drawing.Size(776, 27);
             this.FolderNameText.TabIndex = 9;
             this.FolderNameText.Text = "Enter New Folder Name:";
             this.FolderNameText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FolderNameText.TextChanged += new System.EventHandler(this.FolderNameText_TextChanged);
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Location = new System.Drawing.Point(12, 36);
+            this.button6.Location = new System.Drawing.Point(12, 34);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(776, 85);
             this.button6.TabIndex = 10;
@@ -217,7 +219,7 @@
             // 
             // AdvSettings
             // 
-            this.AdvSettings.Location = new System.Drawing.Point(12, 1);
+            this.AdvSettings.Location = new System.Drawing.Point(490, 1);
             this.AdvSettings.Name = "AdvSettings";
             this.AdvSettings.Size = new System.Drawing.Size(193, 29);
             this.AdvSettings.TabIndex = 15;
@@ -297,11 +299,23 @@
             this.button2.Text = "Help";
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(12, 1);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(88, 29);
+            this.Home.TabIndex = 38;
+            this.Home.Text = "Go Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
+            // 
             // ManifestCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 874);
+            this.ControlBox = false;
+            this.Controls.Add(this.Home);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.ImageWriter);
             this.Controls.Add(this.SelectImage);
@@ -357,5 +371,6 @@
         private Button SelectImage;
         private Button ImageWriter;
         private Button button2;
+        private Button Home;
     }
 }
