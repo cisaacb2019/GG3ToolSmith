@@ -335,8 +335,64 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
 
         private void StartProbe_Click(object sender, EventArgs e)
         {
+            // Create a new picture box for the probe circle
+            PictureBox probePictureBox = new PictureBox();
 
+            // Configure the picture box for the probe circle
+            probePictureBox.Location = pictureBox3.Location;
+            probePictureBox.Size = pictureBox3.Size;
+            probePictureBox.BackColor = Color.Green;
+
+            // Subscribe to the MouseDown, MouseMove, and MouseUp events of the probe picture box
+            probePictureBox.MouseDown += probePictureBox_MouseDown;
+            probePictureBox.MouseMove += probePictureBox_MouseMove;
+            probePictureBox.MouseUp += probePictureBox_MouseUp;
+
+            // Add the probe picture box to the form's controls
+            pictureBox1.Controls.Add(probePictureBox);
+
+            // Refresh the picture box to display the new probe circle
+            pictureBox1.Refresh();
         }
+
+        private bool isProbeDragging;
+        private Point probeOffset;
+
+        private void probePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            isProbeDragging = true;
+            probeOffset = e.Location;
+        }
+
+        private void probePictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isProbeDragging)
+            {
+                PictureBox probePictureBox = (PictureBox)sender;
+
+                // Calculate the new position of the probe picture box aligned to the grid
+                int newX = (e.X + probePictureBox.Left - probeOffset.X) / gridSpacingWidth * gridSpacingWidth;
+                int newY = (e.Y + probePictureBox.Top - probeOffset.Y) / gridSpacingHeight * gridSpacingHeight;
+
+                // Ensure the new position stays within the boundaries of pictureBox1
+                int maxX = pictureBox1.Width - probePictureBox.Width;
+                int maxY = pictureBox1.Height - probePictureBox.Height;
+                newX = Math.Max(0, Math.Min(newX, maxX));
+                newY = Math.Max(0, Math.Min(newY, maxY));
+
+                probePictureBox.Location = new Point(newX, newY);
+
+                // Refresh pictureBox1 to trigger the pictureBox1_Paint event and update the display
+                pictureBox1.Refresh();
+            }
+        }
+
+        private void probePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            isProbeDragging = false;
+        }
+
+
 
         private void Home_Click(object sender, EventArgs e)
         {
