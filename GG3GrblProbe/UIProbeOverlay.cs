@@ -16,8 +16,7 @@ namespace GG3GrblProbe
 
         public double SpindleLocationX;
         public double SpindleLocationY;
-        public double ProbeLocationX;
-        public double ProbeLocationY;
+
 
 
         public UIProbeOverlay()
@@ -415,10 +414,6 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
             double greenBoxX = ProbePictureBox.Location.X;
             double greenBoxY = ProbePictureBox.Location.Y;
 
-            // Get the coordinates of the red circle
-            int redCircleX = pictureBox3.Location.X;
-            int redCircleY = pictureBox3.Location.Y;
-
             double greenboxcalcy =( greenBoxX / 3 ) - 238.5;
 
             double greenboxcalcx = ((greenBoxY / 3) * -1 ) + 4;
@@ -436,12 +431,60 @@ private void pictureBox3_Paint(object sender, PaintEventArgs e)
                 greenboxadjustedx = greenboxcalcx;
             }
 
-            // Display the coordinates
-            MessageBox.Show($"Green Box Coordinates: (x{greenboxadjustedx}, y{greenboxcalcy})\n" +
-                            $"Red Circle Coordinates: (x{SpindleLocationX},y {SpindleLocationY})" +
-                            $"Testing {greenBoxY}");
-        }
+            // Create a custom dialog using a Form
+            using (Form prompt = new Form())
+            {
+                prompt.ClientSize = new Size(300, 150);
+                prompt.Text = "Calculation Selection";
 
+                Label label = new Label()
+                {
+                    Location = new Point(10, 20),
+                    Size = new Size(prompt.ClientSize.Width - 20, 30),
+                    Text = "Which calculation do you want?",
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+
+                Button xButton = new Button()
+                {
+                    Text = "X Axis",
+                    Size = new Size(100, 30),
+                    Location = new Point((prompt.ClientSize.Width - 20) / 2 - 110, 70),
+                    DialogResult = DialogResult.No
+                };
+
+                Button yButton = new Button()
+                {
+                    Text = "Y Axis",
+                    Size = new Size(100, 30),
+                    Location = new Point((prompt.ClientSize.Width - 20) / 2 + 10, 70),
+                    DialogResult = DialogResult.Yes
+                };
+
+                xButton.Click += (s, ev) => { prompt.Close(); };
+                yButton.Click += (s, ev) => { prompt.Close(); };
+
+                prompt.Controls.Add(label);
+                prompt.Controls.Add(xButton);
+                prompt.Controls.Add(yButton);
+
+                DialogResult result = prompt.ShowDialog();
+
+                if (result == DialogResult.Yes)
+                {
+                    // Y-axis calculation selected
+                    // Perform the Y-axis calculation here
+                    // ...
+                }
+                else if (result == DialogResult.No)
+                {
+                    // X-axis calculation selected
+                    // Perform the X-axis calculation here
+                    // ...
+                }
+            }
+
+        }
     }
 
 }

@@ -145,12 +145,12 @@ namespace GG3GrblProbe
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            string selectedDirectory = GetDirectory();
-            if (!string.IsNullOrEmpty(selectedDirectory))
+            string filePath = SelectDocumentFile();
+            if (!string.IsNullOrEmpty(filePath))
             {
-                string filePath = Path.Combine(selectedDirectory, "document.txt");
+                string directory = Path.GetDirectoryName(filePath);
                 string content = ReadFromFile(filePath);
-                CurrentFilePath = selectedDirectory;
+                CurrentFilePath = directory;
                 Counter.Text = content;
                 AddOne.Visible = true;
                 Sub1.Visible = true;
@@ -158,6 +158,23 @@ namespace GG3GrblProbe
                 Counter.Visible = true;
             }
         }
+
+        private string SelectDocumentFile()
+        {
+            using (var openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Text Files|*.txt";
+                openFileDialog.Title = "Select Document File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    return openFileDialog.FileName;
+                }
+            }
+
+            return null;
+        }
+
 
         private string ReadFromFile(string filePath)
         {
